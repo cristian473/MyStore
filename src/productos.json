@@ -1,0 +1,44 @@
+[
+    {
+    "nombre":"Colchon 80x190x17",
+    "precio": 1650,
+    "stock": 10,
+    "imagen": ""   
+    },
+    {
+    "nombre":"Colchon 80x190x17",
+    "precio": 12650,
+    "stock": 1321,
+    "imagen": ""   
+   },
+   {
+    "nombre":"Colchon 80x190x17",
+    "precio": 6315,
+    "stock": 6,
+    "imagen": ""   
+   },
+   {
+    "nombre":"Colchon 80x190x17",
+    "precio": 651,
+    "stock": 2,
+    "imagen": ""   
+   },
+   {
+    "nombre":"Colchon 80x190x17",
+    "precio": 615,
+    "stock": 12,
+    "imagen": ""   
+   },
+   {
+    "nombre":"Colchon 80x190x17",
+    "precio": 65143,
+    "stock": 321,
+    "imagen": ""   
+   },
+   {
+    "nombre":"Colchon 80x190x17",
+    "precio": 1651,
+    "stock": 1651,
+    "imagen": ""   
+   }
+]
