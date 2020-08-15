@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.proContainer {
+  text-align: center;
+}
+
+.proContainer h2 {
+  text-align: center;
+}
+
+form {
+  display: grid;
+}
+
+.details{
+  display: contents;
+}

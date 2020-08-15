@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
-
+import {addProduct} from '../../actions/productActions'
 
 const AddProductForm = () => {
+
+    
 
     const initialState = {
         name:'',
@@ -19,9 +21,7 @@ const AddProductForm = () => {
 
     const handlerSubmit = (e) => {
         e.preventDefault()
-
-
-
+        addProduct(producto)
         setProduct(initialState)
 
     }
@@ -29,11 +29,11 @@ const AddProductForm = () => {
 
     return (
         <>
-            <form onSubmit={handlerSubmit} >
-                <input type="text" name= 'name' value={producto.name} onChange={handlerInputChange}/>
-                <input type="text" name= 'stock' value={producto.stock} onChange={handlerInputChange}/>
-                <input type="text" name= 'imagen' value={producto.imagen} onChange={handlerInputChange}/>
-                <input type="text" name= 'precio' value={producto.precio} onChange={handlerInputChange}/>
+            <form onSubmit={(e)=>handlerSubmit(e)} >
+                <input type="text" name= 'name' placeholder= 'nombre' value={producto.name} onChange={handlerInputChange}/>
+                <input type="text" name= 'stock' value={producto.stock} placeholder='stock' onChange={handlerInputChange}/>
+                <input type="text" name= 'imagen' value={producto.imagen} placeholder='imagen' onChange={handlerInputChange}/>
+                <input type="text" name= 'precio' value={producto.precio} placeholder='precio' onChange={handlerInputChange}/>
                 <button> submit</button>
 
             </form>

@@ -1,6 +1,13 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
+// var admin = require('firebase-admin');
+
+// var defaultApp = admin.initializeApp({
+//     credential: admin.credential.applicationDefault(),
+//     databaseURL: 'https://mystore-eba84.firebaseio.com'
+//   });
+
 var firebaseConfig= {
     apiKey: "AIzaSyBT6ytCJTBSoaiYq9cFlBkazH_q9BBs6oM",
     authDomain: "mystore-eba84.firebaseapp.com",

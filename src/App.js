@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ListaProductos from '../src/components/catalogo/listaProductos'
 import AddProductForm from '../src/components/gestion/addProductForm'
-
+import './firebase'
 
 function App() {
   return (
@@ -32,9 +31,8 @@ function App() {
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
       </script> */}
-    </div>
-    
-        
+  </div>  
+
   );
 }
 
