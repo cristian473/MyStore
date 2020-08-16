@@ -1,44 +1,212 @@
 [
-    {
-    "nombre":"Colchon 80x190x17",
-    "precio": 1650,
-    "stock": 10,
-    "imagen": ""   
-    },
-    {
-    "nombre":"Colchon 80x190x17",
-    "precio": 12650,
-    "stock": 1321,
-    "imagen": ""   
-   },
-   {
-    "nombre":"Colchon 80x190x17",
-    "precio": 6315,
-    "stock": 6,
-    "imagen": ""   
-   },
-   {
-    "nombre":"Colchon 80x190x17",
-    "precio": 651,
-    "stock": 2,
-    "imagen": ""   
-   },
-   {
-    "nombre":"Colchon 80x190x17",
-    "precio": 615,
-    "stock": 12,
-    "imagen": ""   
-   },
-   {
-    "nombre":"Colchon 80x190x17",
-    "precio": 65143,
-    "stock": 321,
-    "imagen": ""   
-   },
-   {
-    "nombre":"Colchon 80x190x17",
-    "precio": 1651,
-    "stock": 1651,
-    "imagen": ""   
-   }
+    usuarios: [{
+        id: 1,
+        name: cristian,
+        lastName: Morales,
+        email: cristian.sebamorales@gmail.com
+        tiendas: [{
+                    id: 1,
+                    name: GoSleep,
+                    direccion: Gral. Lavalleja 3276,
+                    telefono: 1157439962,
+                    shareLink: myStore.com/213215606506231096
+                    items: [{
+                        id: 3,
+                        name: colchon 1,20x80
+                        medidas: 190*80,
+                        colores: azul
+                        stock: 30,
+                        precio: 300
+                        precioMayorista: 200,
+                        envío: true,
+                        imagen: 'https://photo.com/colchon',
+
+
+                    },{
+                        id: 4,
+                        name: sillon 1,20x80
+                        medidas: 190*80,
+                        colores: blanco
+                        stock: 10,
+                        precio: 1500,
+                        precioMayorista: null
+                        envío: false,
+                        imagen: 'https://photo.com/colchon',
+
+                    }],
+                    ventas: [{
+                        itemId: 3,
+                        fecha: 11/11/2020,
+                        cantidad: 5,
+                        precioMayorista: true,
+                        envio: 300,
+                        subTotal: 1500
+                        total: 1300,
+                        
+                    },{
+                        itemId: 4,
+                        fecha: 11/11/2020,
+                        cantidad: 1,
+                        precioMayorista: null,
+                        envio: 100,
+                        subTotal: 1500,
+                        total: 1600,
+                    }]
+
+                },{
+                        id: 1,
+                        name: estiloMadera,
+                        direccion: Gral. Lavalleja 3276,
+                        telefono: 1157439962,
+                        shareLink: myStore.com/1650650540
+                        items: [{
+                            id: 1,
+                            name: colchon 1,20x80
+                            medidas: 190*80,
+                            colores: azul
+                            stock: 30,
+                            precio: 300
+                            precioMayorista: 200,
+                            envío: true,
+                            imagen: 'https://photo.com/colchon',
+    
+    
+                        },{
+                            id: 2,
+                            name: sillon 1,20x80
+                            medidas: 190*80,
+                            colores: blanco
+                            stock: 10,
+                            precio: 1500,
+                            precioMayorista: null
+                            envío: false,
+                            imagen: 'https://photo.com/colchon',
+    
+                        }],
+                        ventas: [{
+                            itemId: 3,
+                            fecha: 11/11/2020,
+                            cantidad: 5,
+                            precioMayorista: true,
+                            envio: 300,
+                            subTotal: 1500
+                            total: 1300,
+                            
+                        },{
+                            itemId: 4,
+                            fecha: 11/11/2020,
+                            cantidad: 1,
+                            precioMayorista: null,
+                            envio: 100,
+                            subTotal: 1500,
+                            total: 1600,
+                        }]
+                    }]
+        },{
+
+        id: 1,
+        name: cristian,
+        lastName: Morales,
+        email: cristian.sebamorales@gmail.com
+        tiendas: [{
+                    id: 1,
+                    name: GoSleep,
+                    direccion: Gral. Lavalleja 3276,
+                    telefono: 1157439962,
+                    shareLink: myStore.com/213215606506231096
+                    items: [{
+                        id: 3,
+                        name: colchon 1,20x80
+                        medidas: 190*80,
+                        colores: azul
+                        stock: 30,
+                        precio: 300
+                        precioMayorista: 200,
+                        envío: true,
+                        imagen: 'https://photo.com/colchon',
+
+
+                    },{
+                        id: 4,
+                        name: sillon 1,20x80
+                        medidas: 190*80,
+                        colores: blanco
+                        stock: 10,
+                        precio: 1500,
+                        precioMayorista: null
+                        envío: false,
+                        imagen: 'https://photo.com/colchon',
+
+                    }],
+                    ventas: [{
+                        itemId: 3,
+                        fecha: 11/11/2020,
+                        cantidad: 5,
+                        precioMayorista: true,
+                        envio: 300,
+                        subTotal: 1500
+                        total: 1300,
+                        
+                    },{
+                        itemId: 4,
+                        fecha: 11/11/2020,
+                        cantidad: 1,
+                        precioMayorista: null,
+                        envio: 100,
+                        subTotal: 1500,
+                        total: 1600,
+                    }]
+
+                },{
+                        id: 1,
+                        name: estiloMadera,
+                        direccion: Gral. Lavalleja 3276,
+                        telefono: 1157439962,
+                        shareLink: myStore.com/1650650540
+                        items: [{
+                            id: 1,
+                            name: colchon 1,20x80
+                            medidas: 190*80,
+                            colores: azul
+                            stock: 30,
+                            precio: 300
+                            precioMayorista: 200,
+                            envío: true,
+                            imagen: 'https://photo.com/colchon',
+    
+    
+                        },{
+                            id: 2,
+                            name: sillon 1,20x80
+                            medidas: 190*80,
+                            colores: blanco
+                            stock: 10,
+                            precio: 1500,
+                            precioMayorista: null
+                            envío: false,
+                            imagen: 'https://photo.com/colchon',
+    
+                        }],
+                        ventas: [{
+                            itemId: 3,
+                            fecha: 11/11/2020,
+                            cantidad: 5,
+                            precioMayorista: true,
+                            envio: 300,
+                            subTotal: 1500
+                            total: 1300,
+                            
+                        },{
+                            itemId: 4,
+                            fecha: 11/11/2020,
+                            cantidad: 1,
+                            precioMayorista: null,
+                            envio: 100,
+                            subTotal: 1500,
+                            total: 1600,
+                        }]
+                    }]
+        }]
+    
+    
 ]
