@@ -16,11 +16,10 @@
                         medidas: 190*80,
                         colores: azul
                         stock: 30,
-                        precio: 300
+                        costo: 100
                         precioMayorista: 200,
-                        envío: true,
+                        precioFinal: 300
                         imagen: 'https://photo.com/colchon',
-
 
                     },{
                         id: 4,
@@ -28,9 +27,9 @@
                         medidas: 190*80,
                         colores: blanco
                         stock: 10,
-                        precio: 1500,
+                        costo: 100
                         precioMayorista: null,
-                        envío: false,
+                        precioFinal: 300
                         imagen: 'https://photo.com/colchon',
 
                     }],
@@ -40,24 +39,35 @@
                         articulos: [{
                             itemId: 3,
                             cantidad: 5,
-                            precioMayorista: true,
-                            envio: 300,
-                            subTotal: 1500
-                            total: 1300
                         }]
-                       
-                        
+                        datosCliente: [{
+                            nombre: sandra,
+                            direccion: Libertad 3276, malvinas Argentinas,
+                            telefono: 11-12345678
+                        }],
+                        envío: true,
+                        precioEnvío:500,
+                        precioMayorista: true,
+                        subTotal: 1500,
+                        total: 1300,
+                        ganancia: 500
                     },{
-                        idVenta: 1,
+                        idVenta: 2,
                         fecha: 11/11/2020,
                         articulos: [{
                             itemId: 3,
                             cantidad: 5,
-                            precioMayorista: true,
-                            envio: 300,
-                            subTotal: 1500
-                            total: 1300
                         }]
+                        datosCliente: [{
+                            nombre: sandra,
+                            direccion: Libertad 3276, malvinas Argentinas,
+                            telefono: 11-12345678
+                        }],
+                        envío: true,
+                        precioEnvío:500,
+                        precioMayorista: true,
+                        subTotal: 1500
+                        total: 1300
                     }]
 
                 },{
@@ -72,8 +82,9 @@
                             medidas: 190*80,
                             colores: azul
                             stock: 30,
-                            precio: 300
+                            costo: 100
                             precioMayorista: 200,
+                            precioFinal: 300,
                             envío: true,
                             imagen: 'https://photo.com/colchon',
     
@@ -110,124 +121,71 @@
                         }]
                     }]
         },{
+            id: 1,
+            name: GoSleep,
+            direccion: Gral. Lavalleja 3276,
+            telefono: 1157439962,
+            shareLink: myStore.com/213215606506231096
+            items: [{
+                id: 3,
+                name: colchon 1,20x80
+                medidas: 190*80,
+                colores: azul
+                stock: 30,
+                costo: 100
+                precioMayorista: 200,
+                precioFinal: 300
+                imagen: 'https://photo.com/colchon',
 
-        id: 2,
-        name: cristian,
-        lastName: Morales,
-        email: cristian.sebamorales@gmail.com
-        tiendas: [{
-                    id: 1,
-                    name: GoSleep,
-                    direccion: Gral. Lavalleja 3276,
-                    telefono: 1157439962,
-                    shareLink: myStore.com/213215606506231096
-                    items: [{
-                        id: 3,
-                        name: colchon 1,20x80
-                        medidas: 190*80,
-                        colores: azul
-                        stock: 30,
-                        precio: 300
-                        precioMayorista: 200,
-                        envío: true,
-                        imagen: 'https://photo.com/colchon',
+            },{
+                id: 4,
+                name: sillon 1,20x80
+                medidas: 190*80,
+                colores: blanco
+                stock: 10,
+                costo: 100
+                precioMayorista: null,
+                precioFinal: 300
+                imagen: 'https://photo.com/colchon',
 
+            }],
+            ventas: [{
+                idVenta: 1,
+                fecha: 11/11/2020,
+                articulos: [{
+                    itemId: 3,
+                    cantidad: 5,
+                }]
+                datosCliente: [{
+                    nombre: sandra,
+                    direccion: Libertad 3276, malvinas Argentinas,
+                    telefono: 11-12345678
+                }],
+                envío: true,
+                precioEnvío:500,
+                precioMayorista: true,
+                subTotal: 1500
+                total: 1300,
+                ganancia: 500
+            },{
+                idVenta: 2,
+                fecha: 11/11/2020,
+                articulos: [{
+                    itemId: 3,
+                    cantidad: 5,
+                }]
+                datosCliente: [{
+                    nombre: sandra,
+                    direccion: Libertad 3276, malvinas Argentinas,
+                    telefono: 11-12345678
+                }],
+                envío: true,
+                precioEnvío:500,
+                precioMayorista: true,
+                subTotal: 1500
+                total: 1300
+            }]
 
-                    },{
-                        id: 4,
-                        name: sillon 1,20x80
-                        medidas: 190*80,
-                        colores: blanco
-                        stock: 10,
-                        precio: 1500,
-                        precioMayorista: null
-                        envío: false,
-                        imagen: 'https://photo.com/colchon',
-
-                    }],
-                    ventas: [{
-                        idVenta: 1,
-                        fecha: 11/11/2020,
-                        articulos: [{
-                            itemId: 3,
-                            cantidad: 5,
-                            precioMayorista: true,
-                            envio: 300,
-                            subTotal: 1500
-                            total: 1300
-                        }]
-                       
-                        
-                    },{
-                        idVenta: 1,
-                        fecha: 11/11/2020,
-                        articulos: [{
-                            itemId: 3,
-                            cantidad: 5,
-                            precioMayorista: true,
-                            envio: 300,
-                            subTotal: 1500
-                            total: 1300
-                        }]
-                    }]
-
-                },{
-                        id: 1,
-                        name: estiloMadera,
-                        direccion: Gral. Lavalleja 3276,
-                        telefono: 1157439962,
-                        shareLink: myStore.com/1650650540
-                        items: [{
-                            id: 1,
-                            name: colchon 1,20x80
-                            medidas: 190*80,
-                            colores: azul
-                            stock: 30,
-                            precio: 300
-                            precioMayorista: 200,
-                            envío: true,
-                            imagen: 'https://photo.com/colchon',
-    
-    
-                        },{
-                            id: 2,
-                            name: sillon 1,20x80
-                            medidas: 190*80,
-                            colores: blanco
-                            stock: 10,
-                            precio: 1500,
-                            precioMayorista: null
-                            envío: false,
-                            imagen: 'https://photo.com/colchon',
-    
-                        }],
-                        ventas: [{
-                            idVenta: 1,
-                            fecha: 11/11/2020,
-                            articulos: [{
-                                itemId: 3,
-                                cantidad: 5,
-                                precioMayorista: true,
-                                envio: 300,
-                                subTotal: 1500
-                                total: 1300
-                            }]
-                           
-                            
-                        },{
-                            idVenta: 1,
-                            fecha: 11/11/2020,
-                            articulos: [{
-                                itemId: 3,
-                                cantidad: 5,
-                                precioMayorista: true,
-                                envio: 300,
-                                subTotal: 1500
-                                total: 1300
-                            }]
-                        }]
-                    }]
         }]
-    
     
 ]
