@@ -3,7 +3,7 @@
         id: 1,
         name: cristian,
         lastName: Morales,
-        email: cristian.sebamorales@gmail.com
+        email: cristian.sebamorales@gmail.com,
         tiendas: [{
                     id: 1,
                     name: GoSleep,
@@ -29,28 +29,35 @@
                         colores: blanco
                         stock: 10,
                         precio: 1500,
-                        precioMayorista: null
+                        precioMayorista: null,
                         envío: false,
                         imagen: 'https://photo.com/colchon',
 
                     }],
                     ventas: [{
-                        itemId: 3,
+                        idVenta: 1,
                         fecha: 11/11/2020,
-                        cantidad: 5,
-                        precioMayorista: true,
-                        envio: 300,
-                        subTotal: 1500
-                        total: 1300,
+                        articulos: [{
+                            itemId: 3,
+                            cantidad: 5,
+                            precioMayorista: true,
+                            envio: 300,
+                            subTotal: 1500
+                            total: 1300
+                        }]
+                       
                         
                     },{
-                        itemId: 4,
+                        idVenta: 1,
                         fecha: 11/11/2020,
-                        cantidad: 1,
-                        precioMayorista: null,
-                        envio: 100,
-                        subTotal: 1500,
-                        total: 1600,
+                        articulos: [{
+                            itemId: 3,
+                            cantidad: 5,
+                            precioMayorista: true,
+                            envio: 300,
+                            subTotal: 1500
+                            total: 1300
+                        }]
                     }]
 
                 },{
@@ -104,7 +111,7 @@
                     }]
         },{
 
-        id: 1,
+        id: 2,
         name: cristian,
         lastName: Morales,
         email: cristian.sebamorales@gmail.com
@@ -139,22 +146,29 @@
 
                     }],
                     ventas: [{
-                        itemId: 3,
+                        idVenta: 1,
                         fecha: 11/11/2020,
-                        cantidad: 5,
-                        precioMayorista: true,
-                        envio: 300,
-                        subTotal: 1500
-                        total: 1300,
+                        articulos: [{
+                            itemId: 3,
+                            cantidad: 5,
+                            precioMayorista: true,
+                            envio: 300,
+                            subTotal: 1500
+                            total: 1300
+                        }]
+                       
                         
                     },{
-                        itemId: 4,
+                        idVenta: 1,
                         fecha: 11/11/2020,
-                        cantidad: 1,
-                        precioMayorista: null,
-                        envio: 100,
-                        subTotal: 1500,
-                        total: 1600,
+                        articulos: [{
+                            itemId: 3,
+                            cantidad: 5,
+                            precioMayorista: true,
+                            envio: 300,
+                            subTotal: 1500
+                            total: 1300
+                        }]
                     }]
 
                 },{
@@ -188,22 +202,29 @@
     
                         }],
                         ventas: [{
-                            itemId: 3,
+                            idVenta: 1,
                             fecha: 11/11/2020,
-                            cantidad: 5,
-                            precioMayorista: true,
-                            envio: 300,
-                            subTotal: 1500
-                            total: 1300,
+                            articulos: [{
+                                itemId: 3,
+                                cantidad: 5,
+                                precioMayorista: true,
+                                envio: 300,
+                                subTotal: 1500
+                                total: 1300
+                            }]
+                           
                             
                         },{
-                            itemId: 4,
+                            idVenta: 1,
                             fecha: 11/11/2020,
-                            cantidad: 1,
-                            precioMayorista: null,
-                            envio: 100,
-                            subTotal: 1500,
-                            total: 1600,
+                            articulos: [{
+                                itemId: 3,
+                                cantidad: 5,
+                                precioMayorista: true,
+                                envio: 300,
+                                subTotal: 1500
+                                total: 1300
+                            }]
                         }]
                     }]
         }]
