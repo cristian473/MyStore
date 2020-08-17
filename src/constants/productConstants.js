@@ -1,1 +1,3 @@
-export const GET_PRODUCTS = 'GET_PRODUCTS'
+export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const ADD_PRODUCT_ORDEN = 'ADD_PRODUCT_ORDEN';
+export const REST_STOCK_STATE = 'REST_STOCK_STATE'

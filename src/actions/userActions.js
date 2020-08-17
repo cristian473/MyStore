@@ -63,8 +63,8 @@ export const getStores = (id) => {
             }
             else {
                 const docs = [];
-                stores.forEach(element => {
-                    docs.push(element.data())
+                stores.forEach(doc => {
+                    docs.push({ ...doc.data(), id: doc.id })
                 });
                 dispatch({type: GET_STORES, payload: docs})
             }

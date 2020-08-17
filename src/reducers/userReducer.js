@@ -38,9 +38,3 @@ export function useReducer (state = initialState, action) {
 
     return state;
 }
-
-export function storeReducer (state = initialState, action){
-
-    
-
-}

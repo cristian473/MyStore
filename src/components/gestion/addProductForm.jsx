@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {addProduct} from '../../actions/productActions'
 import { useSelector } from 'react-redux'
 
-const AddProductForm = () => {
+const AddProductForm = ({idStore}) => {
 
     const user = useSelector(store => store.userLogged)
 
@@ -11,7 +11,7 @@ const AddProductForm = () => {
         stock: '',
         imagen: '',
         precio: '',
-        idTienda: '',
+        idTienda: idStore
     }
 
     const [producto, setProduct] = useState(initialState)

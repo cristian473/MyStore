@@ -1,7 +1,8 @@
-import {GET_PRODUCTS} from '../constants/productConstants'
+import {GET_PRODUCTS, REST_STOCK_STATE} from '../constants/productConstants'
 
 const initialState = {
-    products: []
+    products: [],
+    productsOrden:[]
 }
 
 export function getData (state = initialState, action) {
@@ -10,9 +11,22 @@ export function getData (state = initialState, action) {
     switch (action.type) {
 
         case GET_PRODUCTS:
-            return action.payload;
+            return {
+                ...state,
+                products: action.payload
+            };
+        
+        case REST_STOCK_STATE:
+            const indexElemet = state.products.findIndex(e => e.id === action.payload.id)
+            state.products[indexElemet].stock--;
+
+            return{
+                ...state
+            }
 
     }
+
+
 
         
 

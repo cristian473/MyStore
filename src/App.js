@@ -8,25 +8,20 @@ import RegisterForm from './components/login/registerForm'
 import { useSelector, useDispatch } from 'react-redux';
 import { auth } from './firebase';
 import Home from '../src/components/home/home'
+import SelectStore from '../src/components/home/selectStore'
 
 function App() {
   const user = useSelector(store => store.user)
   const userLogged = useSelector(store => store.userLogged)
   const dispatch = useDispatch();
-
-  console.log(userLogged)
   return (
     <div>
       <BrowserRouter>
       {userLogged ? (
           <Switch>
-            <Route path="/" component={Home} />
-            {/* <Route exact path="/login" component={LoginForm} />
-            <Route exact path="/registro">
-              {user.registered ? <Redirect to='/login' /> : <RegisterForm />}
-            </Route> */}
+            <Route exact path="/" component={SelectStore} />
             
-            <Route path="/tienda/:store" component={AddProductForm} />
+            <Route path="/:idStore/dashboard" component={Home} />
 
           </Switch>
       ):(

@@ -5,12 +5,12 @@ import {getProducts} from '../../actions/productActions'
 import {useDispatch, useSelector} from 'react-redux'
 
 
-const ListaProductos = () => {
+const ListaProductos = ({idStore}) => {
     const dispatch = useDispatch();
-    const products = useSelector (store => store.products)
+    const products = useSelector (store => store.products.products)
     
     useEffect(()=> {
-        dispatch(getProducts());
+        dispatch(getProducts(idStore));
     }, [])
 
     return (
@@ -20,11 +20,7 @@ const ListaProductos = () => {
                     <div>
                         <div>nombre ---- stock ---- precio</div>
                         <Producto 
-                            id = {pro.id}
-                            name = {pro.name}
-                            stock = {pro.stock}
-                            precio = {pro.precio}
-                            imagen = {pro.imagen}
+                            datos={pro}
                         />
                     </div>
                                 

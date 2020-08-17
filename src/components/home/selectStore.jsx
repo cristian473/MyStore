@@ -4,6 +4,7 @@ import AddProductForm from '../gestion/addProductForm'
 import AddStoreForm from '../gestion/addStoreForm'
 import { useSelector, useDispatch } from 'react-redux'
 import {getStores} from '../../actions/userActions'
+import { Link } from 'react-router-dom'
 
 const SelectStore = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const SelectStore = () => {
                 <div>
                     {stores.map(store => (
                         <div>
-                            <h3>{store.name}</h3>
+                            <Link to={'/'+store.id+'/dashboard'}>{store.name}</Link>
                         </div>
                     )
                     )}
@@ -33,8 +34,6 @@ const SelectStore = () => {
                 </div>
                 
             )}
-            <ListaProductos/>
-            <AddProductForm/>
             
         </div>
     )
