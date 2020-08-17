@@ -28,11 +28,11 @@ const LoginForm = () => {
             (<h2>Hola! tanto tiempo!</h2>)}
             
             <div>
-                <input type="email" placeholder='email' name='email'/>
-                <input type="password" placeholder='password' name='password'/>
+                <input onChange={handlerInputChange} type="email" placeholder='email' name='email'/>
+                <input onChange={handlerInputChange} type="password" placeholder='password' name='password'/>
             </div>
             <div>
-                <button>iniciar sesion</button>
+                <button onClick={handlerSubmit}>iniciar sesion</button>
             </div>
             <Link to='/registro'>registrarse</Link>
         </div>

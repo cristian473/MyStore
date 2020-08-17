@@ -6,9 +6,11 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import LoginForm from './components/login/loginForm'
 import RegisterForm from './components/login/registerForm'
 import { useSelector } from 'react-redux';
+import { auth } from './firebase';
 
 function App() {
   const user = useSelector(store => store.user)
+  const userLogged = auth.currentUser;
   return (
     <div>
       <BrowserRouter>
@@ -17,6 +19,7 @@ function App() {
           <Route exact path="/registro">
             {user.registered ? <Redirect to='/login'/> : <RegisterForm/>}
           </Route>
+          {console.log(userLogged)}
           <Route path="/tienda/:store" component={ListaProductos}/>
           <Route path="/tienda/:store" component={AddProductForm}/>
         </Switch>

@@ -8,13 +8,28 @@ export const registerUser = (data) => {
     return (dispatch) => {
         auth.createUserWithEmailAndPassword(data.email, data.password)
             .then(u => {
-                dispatch({type: REGISTERED, payload: data})
+                auth.signInWithEmailAndPassword(data.email, data.password)
+                .then(()=>{
+            
+                    const userLogged = auth.currentUser;
+                    userLogged.updateProfile({
+                        displayName:data.name
+                    })
+                    
+                })
         })}
    
             
    
 }
 
-export const loginUser = () => {
-
+export const loginUser = (data) => {
+    auth.signInWithEmailAndPassword(data.email, data.password)
+        .then(()=>{
+            
+            const userLogged = auth.currentUser;
+            console.log(userLogged)
+        })
+    
+    
 }
