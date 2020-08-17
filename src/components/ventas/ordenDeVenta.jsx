@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-const OrdenVenta = () => {
+const OrdenVenta = ({idStore}) => {
 
     const productsOrden = useSelector(store => store.orden.productsOrden)
-
     
     return (
         <div className='ordenes'>
@@ -16,6 +16,16 @@ const OrdenVenta = () => {
                             <h3>unidades: {e.cantidad}</h3>
                         </div>
                     ))}
+                
+                    <Link
+                        to={{
+                            pathname: '/'+idStore+'/finalizar-venta',
+                            state: {productos: productsOrden}
+                        }}
+                        
+                    >
+                        Finalizar venta
+                    </Link>
                 </div>
                 
             ):(

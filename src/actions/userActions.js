@@ -1,6 +1,6 @@
 import {auth, db} from '../firebase'
 import {Redirect} from 'react-router-dom'
-import {GET_STORES, REGISTERED} from '../constants/userConstants'
+import {GET_STORES, REGISTERED, LOGGED} from '../constants/userConstants'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { GET_PRODUCTS } from '../constants/productConstants'
@@ -34,7 +34,9 @@ export const registerUser = (data) => {
 
 export const loginUser = (data) => {
 
-    auth.signInWithEmailAndPassword(data.email, data.password)
+    return (dispatch) => {
+
+        auth.signInWithEmailAndPassword(data.email, data.password)
         .then(()=>{
             
             const currentUser = auth.currentUser;
@@ -45,7 +47,16 @@ export const loginUser = (data) => {
                 email: currentUser.email
             }
             localStorage.setItem('userLogged', JSON.stringify(userLogged))
+            dispatch({type: LOGGED})
         })
+
+
+    }
+}
+
+export const logUot = () => {
+    localStorage.removeItem('userLogged');
+    window.location.replace('http://localhost:3000/login')
 }
 
 export const addStore = (store) => {

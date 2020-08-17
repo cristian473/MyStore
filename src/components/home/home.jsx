@@ -19,7 +19,7 @@ const Home = props => {
             <ListaProductos idStore= {idStore}/>
             <AddProductForm idStore= {idStore}/>
             <AddStoreForm/>
-            <OrdenVenta/>
+            <OrdenVenta idStore={idStore}/>
         </div>
     )
 }

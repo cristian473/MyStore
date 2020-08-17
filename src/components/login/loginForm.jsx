@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import {auth} from '../../firebase'
 import {Link} from 'react-router-dom'
 import {loginUser} from '../../actions/userActions'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 const LoginForm = () => {
-
+    const dispatch = useDispatch()
     const initialState={email:'', password:''};
     const user = useSelector(store => store.user.user);
     const [state, setState] = useState(initialState);
@@ -17,7 +17,7 @@ const LoginForm = () => {
 
     const handlerSubmit = (e) => {
         e.preventDefault();
-        loginUser(state)
+        dispatch(loginUser(state))
     }
 
     return (

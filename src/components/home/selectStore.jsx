@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom'
 
 const SelectStore = () => {
     const dispatch = useDispatch();
-    const userLogged = useSelector(store => store.userLogged)
+    const userLogged = useSelector(store => store.userLogged.user)
     const stores = useSelector(store => store.user.stores)
-
+    console.log(userLogged)
     useEffect(() => {
         dispatch(getStores(userLogged.id));
     }, [])
