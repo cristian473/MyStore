@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import {getData} from './productosReducers'
-import {useReducer} from './userReducer'
+import {useReducer, userLoggedState} from './userReducer'
 
 export const reducers = combineReducers({
     products: getData,
-    user: useReducer
+    user: useReducer,
+    userLogged: userLoggedState
 })
