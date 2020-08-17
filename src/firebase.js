@@ -1,5 +1,7 @@
 import firebase from 'firebase/app'
+import 'firebase/auth'
 import 'firebase/firestore'
+
 
 // var admin = require('firebase-admin');
 
@@ -19,5 +21,5 @@ var firebaseConfig= {
     measurementId: "G-18ZS86Z3XZ"
   };
   const fb = firebase.initializeApp(firebaseConfig);
-
+  export const auth = firebase.auth()
   export const db = fb.firestore();

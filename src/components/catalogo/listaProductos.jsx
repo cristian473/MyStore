@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import productos from '../../productos.json'
+// import productos from '../../productos.json'
 import Producto from './producto'
 import {getProducts} from '../../actions/productActions'
 import {useDispatch, useSelector} from 'react-redux'
