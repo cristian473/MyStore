@@ -25,6 +25,8 @@ const SelectStore = () => {
                         </div>
                     )
                     )}
+
+                    <Link to={'/crear-tienda'} ><button>Crear Tienda</button></Link>
                 </div>
                 
             ):(

@@ -13,12 +13,14 @@ const Home = props => {
     const stores = useSelector(store => store.user.stores)
     const idStore = props.match.params.idStore
 
+    useEffect(()=>{
+        localStorage.setItem('idStore', idStore)
+    },[])
 
     return (
         <div>
             <ListaProductos idStore= {idStore}/>
             <AddProductForm idStore= {idStore}/>
-            <AddStoreForm/>
             <OrdenVenta idStore={idStore}/>
         </div>
     )

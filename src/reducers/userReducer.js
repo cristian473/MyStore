@@ -1,11 +1,12 @@
-import {REGISTERED, GET_STORES, LOGGED} from '../constants/userConstants'
+import {REGISTERED, GET_STORES, LOGGED, GET_MOVIMIENTOS} from '../constants/userConstants'
 
 const initialState = {
     user: {},
     stores: [],
     items:[],
     registered: false,
-    loged: false
+    loged: false,
+    movimientos:[]
 }
 
 export function userLoggedState (state = initialState, action){
@@ -40,6 +41,11 @@ export function useReducer (state = initialState, action) {
             return {
                 ...state,
                 stores: action.payload
+            }
+        case GET_MOVIMIENTOS :
+            return {
+                ...state,
+                movimientos: action.payload
             }
 
     }

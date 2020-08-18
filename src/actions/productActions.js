@@ -9,8 +9,10 @@ export const getProducts = (id) => {
                 db.collection("productos")
                   .where('idTienda', '==', id).onSnapshot((querySnapshot) => {
                         const docs = []
+                        
                         querySnapshot.forEach(doc => {
                                 docs.push({ ...doc.data(), id: doc.id })
+                                console.log(docs)
                         })
                         dispatch({ type: 'GET_PRODUCTS', payload: docs })
                 })
