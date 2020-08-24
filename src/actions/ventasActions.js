@@ -1,5 +1,6 @@
 import {db} from '../firebase'
 import {ADD_PRODUCT_ORDEN, REST_STOCK_STATE} from '../constants/productConstants'
+import Swal from 'sweetalert2'
  // db.collection('productos').doc(id).update({
     //     stock: stock
     // })
@@ -60,7 +61,15 @@ export const EndOrden = (idTienda, orden, subTotal, descuentoMayorista, details)
                 db.collection('productos').doc(item.id).update({
                     stock:newStock
                 })
-            });
+                
+            })
+            Swal.fire(
+                'Buen trabajo!',
+                'Orden registrada con éxito.',
+                'success'
+              ).then(()=> {
+                  dispatch({type: 'CLEAN_ORDEN'})
+              })
             
         })
     }
@@ -75,6 +84,7 @@ export const getVentas = (idTienda) =>{
                         querySnapshot.forEach(doc => {
                                 docs.push({ ...doc.data(), id: doc.id })
                         })
+                        
                         dispatch({ type: 'GET_MOVIMIENTOS', payload: docs })
                 })
         }

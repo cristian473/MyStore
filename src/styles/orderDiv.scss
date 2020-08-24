@@ -1,0 +1,38 @@
+@import './vars.scss';
+
+.ordenesContainerDiv{
+
+    .ordenesDiv{
+        width: 100%;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+
+        .ordenDiv{
+            margin: 10px;
+            background-color:$Violet;
+            padding: 5px;
+            border-radius: 6px;
+            display: flex;
+            h4{
+                margin: 0;
+                color: white;
+            }
+        }
+    }
+    .buttonsContainer{
+        display: flex;
+        margin-bottom: 10px;
+        div{
+            margin: 0px 30px;
+            background-color: $Crema;
+            padding: 15px;
+            border-radius: 10px;
+            color: #073b4c;
+            
+        }
+
+    }
+}
+
+    

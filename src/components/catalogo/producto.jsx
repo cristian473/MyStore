@@ -7,11 +7,28 @@ const Producto = ({datos}) => {
     const dispatch = useDispatch();
     
     return (
-        <div>
-            <button onClick = {()=>dispatch(resUnidadVenta(datos))}> - </button>
-            <div className='details'>{datos.name} {datos.stock} {datos.precio}</div>
-            <img src={datos.imagen}/>
-            <button  onClick = {()=>dispatch(sumUnidadVenta(datos))} > + </button>
+        <div className='productContainer'>
+            <div className='buttonContainer'>
+            <div onClick = {()=>dispatch(resUnidadVenta(datos))}> - </div>
+            </div>
+            
+            <div className='details'>
+                <div className='nameProduct'>
+                    {datos.name}
+                </div>
+                <div className='stockPrecio'>
+                    stock: {datos.stock} precio: {datos.precio}
+                </div>
+                
+                
+            </div>
+            <div className='imgContainer'>
+                <img src={datos.imagen}/>   
+            </div>
+            <div  className='buttonContainer'>
+            <div  onClick = {()=>dispatch(sumUnidadVenta(datos))} > + </div>
+            </div>
+            
         </div>
     )
 

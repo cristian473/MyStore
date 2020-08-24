@@ -3,7 +3,7 @@ import React, {useEffect} from 'react'
 import Producto from './producto'
 import {getProducts} from '../../actions/productActions'
 import {useDispatch, useSelector} from 'react-redux'
-
+import '../../styles/productList.scss'
 
 const ListaProductos = ({idStore}) => {
     const dispatch = useDispatch();
@@ -15,14 +15,14 @@ const ListaProductos = ({idStore}) => {
 
     return (
         <div className='proContainer'>
+            <div className='listaDiv'>
            {products.length > 0 ? (
                 products.map(pro => (
-                    <div>
-                        <div>nombre ---- stock ---- precio</div>
+                    
                         <Producto 
                             datos={pro}
                         />
-                    </div>
+                    
                                 
                                 
                 ))
@@ -30,6 +30,7 @@ const ListaProductos = ({idStore}) => {
            ) : (
             <h2>cargando...</h2>
            )}
+           </div>
             
         </div>
     )

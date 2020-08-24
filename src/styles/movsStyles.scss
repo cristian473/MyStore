@@ -1,0 +1,69 @@
+@import "./vars.scss";
+
+.movContainer {
+  display: flex;
+  justify-content: center;
+  .titleMovs {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    .titlesDiv {
+      display: flex;
+      justify-content: space-between;
+        margin: 15px 0px;
+      .titleItemsDiv {
+        display: flex;
+        justify-content: center;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        h3 {
+          margin: 0;
+        }
+      }
+      .valuesTitlesDiv {
+        display: flex;
+        width: auto;
+        
+        h3 {
+          margin: 0px 7px;
+        }
+      }
+    }
+
+    .listaMovsContainer {
+      display: flex;
+
+      flex-direction: column;
+
+      .movDiv {
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+        background-color: $Crema;
+        margin: 10px 0px;
+        border-radius: 6px;
+        border: 1px solid black;
+        .containerItem {
+          display: flex;
+          width: auto;
+          h4 {
+            margin: 3px;
+            color: white;
+            border-radius: 6px;
+            background-color: $Violet;
+            padding: 5px;
+          }
+        }
+        .valuesDiv {
+          display: flex;
+          width: auto;
+          align-items: center;
+          h3 {
+            margin: 0px 10px;
+          }
+        }
+      }
+    }
+  }
+}

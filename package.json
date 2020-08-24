@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "firebase": "^7.17.2",
     "firebase-admin": "^9.0.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
@@ -17,7 +18,8 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "require-context": "^1.1.0"
+    "require-context": "^1.1.0",
+    "sweetalert2": "^9.17.1"
   },
   "scripts": {
     "start": "react-scripts start",

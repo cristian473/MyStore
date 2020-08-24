@@ -1,0 +1,14 @@
+.NavBar {
+    display: flex;
+    background-color: #02c39a;
+    width: 100%;
+    height: 50px;
+    justify-content: flex-end;
+    align-items: center;
+    .buttonNav{
+        background-color: #f0f3bd;
+        margin: 0px 5px;
+        padding: 5px;
+        border-radius: 6px;
+    }
+}

@@ -1,0 +1,53 @@
+.bottonContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #02c39a;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+
+    .ordenVentaContainer{
+        display: flex;
+    justify-content: center;
+    }
+    .optionsContainer{
+        display: flex;
+        .datosContainer{
+            display: flex;
+            width: 80%;
+            justify-content: space-around;
+            .valueDiv{
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+
+                h4{
+                    margin:0;
+                }
+                h3{
+                    font-size: 2rem;
+                    margin:0;
+                }
+            }
+        }
+        .buttonsContainer{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            div{
+                padding:10px;
+                text-align: center;
+                background-color: #f0f3bd;
+                margin: 5px;
+                border-radius: 10px;
+                border: 1px solid #073b4c;
+                color: #073b4c;
+
+
+            }
+
+        }
+    }
+}

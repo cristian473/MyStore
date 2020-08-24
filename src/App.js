@@ -20,12 +20,15 @@ function App() {
   const userLogged = useSelector(store => store.userLogged)
   
   return (
-    <div>
+    <>
       <BrowserRouter>
       
       {userLogged.loged ? (
         <Fragment>
         <NavBar/>
+        <div className='bodyContainer'>
+
+        
           <Switch>
             <Redirect exact from='/login' to='/'/>
             <Route exact path="/" component={SelectStore} />
@@ -35,6 +38,7 @@ function App() {
             <Route exact path='/:idStore/movimientos' component={Movimientos}/>
 
           </Switch>
+          </div>
           </Fragment>
       ):(
         <Switch>
@@ -48,7 +52,7 @@ function App() {
       )}
         
       </BrowserRouter>
-  </div>  
+  </>  
 
   );
 }

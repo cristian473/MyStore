@@ -1,0 +1,41 @@
+.storeSelectorScreen{
+    justify-content: center;
+    display:flex;
+    align-items: center;
+    height: 100%;
+    .storeSelectorContainer{
+        width: 30%;
+        display: flex;
+        background-color: #02c39a;
+        border-radius: 10px;
+        padding: 20px;
+        
+        justify-content: center;
+        text-align:center;
+
+        .storeTitle{
+            div{
+               margin: 8px 0px; 
+               border: 1px #f0f3bd solid;
+               padding: 5px;
+               border-radius: 10px;
+            }
+            
+            a{
+                color: #f0f3bd;   
+            }
+            button{
+               margin: 8px 0px; 
+               border: 1px #f0f3bd solid;
+               padding: 5px;
+               background-color: #028090;
+               border-radius: 10px;
+               width: 100%;
+               color: #f0f3bd;
+               height: 40px;
+               font-size: larger;
+            }
+        }
+    
+    }
+}

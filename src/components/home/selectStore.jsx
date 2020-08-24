@@ -5,6 +5,7 @@ import AddStoreForm from '../gestion/addStoreForm'
 import { useSelector, useDispatch } from 'react-redux'
 import {getStores} from '../../actions/userActions'
 import { Link } from 'react-router-dom'
+import '../../styles/storeSelector.scss'
 
 const SelectStore = () => {
     const dispatch = useDispatch();
@@ -16,9 +17,12 @@ const SelectStore = () => {
     }, [])
 
     return (
-        <div>
+        <div className='storeSelectorScreen'>
+
+        
+        <div className='storeSelectorContainer'>
             {stores ? (
-                <div>
+                <div className='storeTitle'>
                     {stores.map(store => (
                         <div>
                             <Link to={'/'+store.id+'/dashboard'}>{store.name}</Link>
@@ -30,13 +34,14 @@ const SelectStore = () => {
                 </div>
                 
             ):(
-                <div>
+                <div className='withoutStoresWarning'>
                     <h3>aún no tiene tiendas cargadas! por favor seleccione una!</h3>
                     <AddStoreForm/>
                 </div>
                 
             )}
             
+        </div>
         </div>
     )
 }

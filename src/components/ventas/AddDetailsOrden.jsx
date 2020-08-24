@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const FinalizarVenta = (props) => {
+const AddDetailsOrden = (props) => {
 
     const idTienda = props.match.params.idStore;
     const products = props.location.state.productos
@@ -16,19 +16,22 @@ const FinalizarVenta = (props) => {
 
                 return(
                     <div>
-                    <h4>{e.name}</h4>
-                    <h4>unidades: {e.cantidad}</h4>
-                    
-                </div>
+                            <h4>{e.name}</h4>
+                            <h4>unidades: {e.cantidad}</h4>
+                        
+                        
+
+                    </div>
                 )
 
             }
                 
             )}
             <h2>total: {total}</h2>
+
         </div>
     )
 
 }
 
-export default FinalizarVenta
+export default AddDetailsOrden

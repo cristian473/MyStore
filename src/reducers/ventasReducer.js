@@ -23,7 +23,12 @@ export function ventasReducer (state = initialState, action) {
                 state.productsOrden.push(action.payload)
                 return state
             }
-            
+        
+        case 'CLEAN_ORDEN':
+            return{
+                ...state,
+                productsOrden:[]
+            }
 
     }
 
