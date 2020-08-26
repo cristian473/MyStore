@@ -20,6 +20,10 @@
             }
         }
     }
+    .detailsFormContainer{
+        display: flex;
+        flex-direction: column;
+    }
     .buttonsContainer{
         display: flex;
         margin-bottom: 10px;
@@ -29,6 +33,7 @@
             padding: 15px;
             border-radius: 10px;
             color: #073b4c;
+            cursor: pointer;
             
         }
 

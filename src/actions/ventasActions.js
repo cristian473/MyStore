@@ -27,14 +27,16 @@ export const EndOrden = (idTienda, orden, subTotal, descuentoMayorista, details)
     const fecha = new Date();
     let newData = {};
     const total = subTotal-descuentoMayorista;
-    if(details){
+    console.log(details)
+    if(details.detailsCompleted){
         newData = {
             idTienda: idTienda,
             fecha: fecha,
             items: orden,
-            envío: details.envio,
-            precioEnvio: details.precioEnvio,
-            precioMayorista: details.precioMayorista,
+            envío: details?.envio,
+            precioEnvio: details?.precioEnvio,
+            // precioMayorista: details?.precioMayorista,
+            cliente: details?.datosCliente,
             subTotal: subTotal,
             total: total,
             ganancia: 500

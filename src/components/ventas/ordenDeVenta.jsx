@@ -1,18 +1,67 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {EndOrden} from '../../actions/ventasActions'
 import '../../styles/orderDiv.scss'
 const OrdenVenta = ({idStore}) => {
+    const detailsInitialState = {detailsCompleted: false, envio : false, precioEnvio : '', cliente : false, datosCliente: {name: '', tel: '', direccion:''}}
+    const dataClientInitialState = {name :'', tel :'', direccion :''};
     const dispatch = useDispatch();
     const productsOrden = useSelector(store => store.orden.productsOrden)
-    
+    const [detailsForm , setDetailsForm]= useState(false);
+    const [details, setDetails] = useState (detailsInitialState)
+    const [dataClient, setDataClient] = useState (dataClientInitialState)
+
     const handlerClickEndOrden = () => {
-        dispatch(EndOrden(idStore,productsOrden, subTotal, descuentoMayorista, details));
+        if(detailsForm) { 
+            setDetails ({...details, detailsCompleted:true})
+        }
+        else{
+            setDetails(detailsInitialState);
+            setDataClient(dataClientInitialState);
+            setDetailsForm(false);
+            dispatch(EndOrden(idStore, productsOrden, subTotal, descuentoMayorista, details));
+        }
     }
     let subTotal = 0;
     let descuentoMayorista = 0;
-    let details = null;
+
+    function toggleFlag(value){
+        var toggle = value ? false : true;
+        return toggle;
+     }
+
+     useEffect(()=> {
+         if(details.detailsCompleted){
+            setDetails(detailsInitialState);
+            setDataClient(dataClientInitialState);
+            setDetailsForm(false);
+            dispatch(EndOrden(idStore, productsOrden, subTotal, descuentoMayorista, details));
+         } 
+        
+     },[details.detailsCompleted])
+
+    const handlerInputClienteChange = (e) => {
+        const {name, value} = e.target;
+        let newState = details;
+        newState.datosCliente[name] = value;
+        setDetails (newState)
+        setDataClient ({...dataClient, [name]: value})
+    }
+
+    const handlerCheckboxChange = (e) => {
+        const {name} = e.target;
+        let newValue = toggleFlag(details[name])
+        setDetails ({...details, [name]: newValue})
+    }
+
+    const handlerInputChange = (e) => {
+        const {name, value} = e.target;
+        setDetails ({...details, [name]: value})
+    }
+
+
+
     return (
         <>
             {productsOrden.length > 0 ? (
@@ -31,17 +80,41 @@ const OrdenVenta = ({idStore}) => {
                         }
                         )}
                     </div>
+
+                    {detailsForm && (
+                        <div className='detailsFormContainer'>
+                            <label for="envio">Envio</label>
+                            <input type='checkbox' onChange={handlerCheckboxChange} name='envio' />
+                            {details.envio && (
+                                <>
+                                <label for="precioEnvio">Precio del envio</label>
+                                <input type="text" name='precioEnvio' onChange={handlerInputChange} value = {details.precioEnvio} />
+                                </>
+                            )}
+                            {/* <input type="text" name='envio' onChange={handlerInputChange} value = {details.envio} /> */}
+                            <label for="cliente">Datos del cliente</label>
+                            <input type='checkbox' onChange={handlerCheckboxChange} name='cliente' />
+                            {details.cliente && (
+                                <>
+                                    <label for="name">Nombre del cliente</label>
+                                    <input type="text" name='name' onChange={handlerInputClienteChange} value = {dataClient.name} />
+                                    <label for="tel">Telefono</label>
+                                    <input type="text" name='tel' onChange={handlerInputClienteChange} value = {dataClient.tel} />
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" name='direccion' onChange={handlerInputClienteChange} value = {dataClient.direccion} />        
+                                </>
+                            )}
+    
+                        </div>
+                    )}
                     
                     <div className="buttonsContainer">
-                        <Link
-                            to={{
-                                pathname: '/' + idStore + '/finalizar-venta',
-                                state: { productos: productsOrden }
-                            }}
+                                          
 
-                        >
-                            <div>Agregar Detalles</div>
-                        </Link>
+                        
+                        <div onClick={() => setDetailsForm(true)}>Agregar Detalles</div>
+                        
+
                         <div onClick={handlerClickEndOrden} >Finalizar venta</div>
                     </div>
                     
