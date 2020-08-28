@@ -1,9 +1,10 @@
 import React from 'react'
 import OrdenVenta from '../ventas/ordenDeVenta'
+import {Link } from 'react-router-dom'
 import '../../styles/bottonOptions.scss'
 const BottonOptions = ({idStore}) => {
 
-    
+    console.log(idStore)
 
     return (
         <div className='bottonContainer'>
@@ -28,12 +29,16 @@ const BottonOptions = ({idStore}) => {
                     
                 </div>
                 <div className='buttonsContainer'>
+                    <Link to={'/'+idStore+'/cargaitems'}>
                     <div>
                         Agregar producto
                     </div>
+                    </Link>
+                    <Link to={'/'+idStore+'/cargacompra'}>
                     <div>
                         Agregar compra de materiales
                     </div>
+                    </Link>
                 </div>
             </div>
         </div>

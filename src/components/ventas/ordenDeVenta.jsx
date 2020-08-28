@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {EndOrden} from '../../actions/ventasActions'
 import '../../styles/orderDiv.scss'
+import Item from '../catalogo/item'
+
 const OrdenVenta = ({idStore}) => {
     const detailsInitialState = {detailsCompleted: false, envio : false, precioEnvio : '', cliente : false, datosCliente: {name: '', tel: '', direccion:''}}
     const dataClientInitialState = {name :'', tel :'', direccion :''};
@@ -72,10 +74,7 @@ const OrdenVenta = ({idStore}) => {
                             if (e.precioMayorista) descuentoMayorista += subTotal - e.precioMayorista;
 
                             return (
-                                <div className='ordenDiv'>
-                                    <h4>{e.cantidad} | {e.name}</h4>
-                                    
-                                </div>
+                                    <Item item={e}/>
                             )
                         }
                         )}
@@ -83,17 +82,23 @@ const OrdenVenta = ({idStore}) => {
 
                     {detailsForm && (
                         <div className='detailsFormContainer'>
+                            <div className='envioDiv'> 
                             <label for="envio">Envio</label>
                             <input type='checkbox' onChange={handlerCheckboxChange} name='envio' />
+                            </div>
                             {details.envio && (
                                 <>
                                 <label for="precioEnvio">Precio del envio</label>
                                 <input type="text" name='precioEnvio' onChange={handlerInputChange} value = {details.precioEnvio} />
                                 </>
                             )}
-                            {/* <input type="text" name='envio' onChange={handlerInputChange} value = {details.envio} /> */}
+                            {/* <input type="text" name='envio' onChange={handlerInputChange} value
+                             = {details.envio} /> */}
+                             <div className="datosClienteDiv">
                             <label for="cliente">Datos del cliente</label>
                             <input type='checkbox' onChange={handlerCheckboxChange} name='cliente' />
+
+                             </div>
                             {details.cliente && (
                                 <>
                                     <label for="name">Nombre del cliente</label>

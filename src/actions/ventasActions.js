@@ -74,6 +74,7 @@ export const EndOrden = (idTienda, orden, subTotal, descuentoMayorista, details)
               })
             
         })
+        .catch(err => console.log(err))
     }
 }
 
@@ -81,14 +82,20 @@ export const getVentas = (idTienda) =>{
     
         return (dispatch) => {
                 db.collection("ventas")
-                  .where('idTienda', '==', idTienda).onSnapshot((querySnapshot) => {
-                        const docs = []
+                  .where('idTienda', '==', idTienda)
+                  .orderBy("fecha", "desc")
+                  .get().then(querySnapshot => {
+                      const docs = []
                         querySnapshot.forEach(doc => {
                                 docs.push({ ...doc.data(), id: doc.id })
                         })
-                        
+                    
                         dispatch({ type: 'GET_MOVIMIENTOS', payload: docs })
-                })
+                  })
+                        
+                        
+                        
+                
         }
         
 }

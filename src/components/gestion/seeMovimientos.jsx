@@ -1,13 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {getVentas} from '../../actions/ventasActions'
+import Item from '../catalogo/item'
 import '../../styles/movsStyles.scss'
 const Movimientos = ()=>{
 
     const movs= useSelector(store => store.user.movimientos)
     const dispatch = useDispatch();
     const idStore = localStorage.getItem('idStore')
+    const [detailsVenta, setDetailsVenta] = useState('');
+    const [indexItem, setIndex] = useState (''); 
     console.log(movs)
+
+    const handlerSeeDetails = (mov) => {
+        console.log(mov)
+        setDetailsVenta(mov)
+    }
+
     useEffect(()=>{
         dispatch(getVentas(idStore))
     },[])
@@ -29,20 +38,59 @@ const Movimientos = ()=>{
                 <div className="listaMovsContainer">
 
                 {movs.length > 0 ? (
-                    movs.map(el => (
-                        <div class='movDiv'>
-                             <div className="containerItem">
-                            {el.items.map(item => 
-                               
-                                    <h4>{item.cantidad} | {item.name}</h4>
+                    movs.map((mov, index) => (
+                        <div className='movContainer'>
+                            <div className='movDiv'>
+                                <div className="containerItem">
+                                {mov.items.map(item => 
                                 
-                            )}
+                                        <Item item = {item}/>
+                                    
+                                )}
+                                </div>
+                                <div className="valuesDiv">
+                                    <button onClick={() => 
+                                    {
+                                        handlerSeeDetails(mov);
+                                        setIndex(index);
+                                    }
+                                    }> ver detalles </button>
+                                    <h3>${mov.total}</h3>
+                                    <h3>${mov.ganancia}</h3>
+                                </div>
+
+                                
+                                
                             </div>
-                            <div className="valuesDiv">
-                                <h3>${el.total}</h3>
-                                <h3>${el.ganancia}</h3>
+                        
+                        {indexItem === index && (
+                            <>
+                        {detailsVenta && (
+                            <div className='detailsContainer'>
+                                <div className='cardDetails'>
+                                    {console.log(detailsVenta)}
+                                    {/* <h2>{detailsVenta.fecha}</h2> */}
+                                    <div className='itemsContainer'>
+                                        {detailsVenta.items.map(item => <Item item={item}/>)}
+                                    </div>
+                                    {detailsVenta.envío ? (
+                                        <h3>Envío: {detailsVenta.precioEnvio}</h3>
+                                        ): (
+                                        <h3>No hay envío registrado</h3>
+                                    )}
+                        
+                                    <h3>Subtotal: {detailsVenta.subTotal}</h3>
+                                    <h3>Total: {detailsVenta.total}</h3>
+                                    <h3>Ganancia: {detailsVenta.ganancia}</h3>
+
+                                </div>
                             </div>
-                            
+                        )
+                        
+                        }
+                        </>
+                        )}
+
                         </div>
                     ))
                 ) : (

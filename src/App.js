@@ -13,7 +13,7 @@ import AddDetailsOrden from './components/ventas/AddDetailsOrden'
 import NavBar from '../src/components/navBar'
 import Movimientos from '../src/components/gestion/seeMovimientos'
 import AddStoreForm from '../src/components/gestion/addStoreForm';
-
+import AddPurchaseForm from '../src/components/gestion/addPurchaseForm'
 
 function App() {
   const user = useSelector(store => store.user)
@@ -36,6 +36,7 @@ function App() {
             <Route exact path="/:idStore/dashboard" component={Home} />
             <Route exact path='/:idStore/finalizar-venta' component={AddDetailsOrden}/>
             <Route exact path='/:idStore/movimientos' component={Movimientos}/>
+            <Route exact path='/:idStore/cargacompra' component={AddPurchaseForm}/>
 
           </Switch>
           </div>

@@ -1,0 +1,20 @@
+@import "./vars.scss";
+
+.containerItems{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .itemAdd{
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        height: 50px;
+        margin: 20px;
+        background-color: $Crema;
+        border-radius: 15px;
+    }
+    .buttons{
+
+    }
+}

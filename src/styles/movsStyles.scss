@@ -35,32 +35,47 @@
       display: flex;
 
       flex-direction: column;
-
-      .movDiv {
+      .movContainer{
         display: flex;
-        padding: 20px;
-        justify-content: space-between;
+        flex-direction: column;
         background-color: $Crema;
-        margin: 10px 0px;
+        padding: 20px;
         border-radius: 6px;
         border: 1px solid black;
-        .containerItem {
+        margin: 10px 0px;
+
+        .movDiv {
           display: flex;
-          width: auto;
-          h4 {
-            margin: 3px;
-            color: white;
-            border-radius: 6px;
-            background-color: $Violet;
-            padding: 5px;
+          justify-content: space-between;
+          .containerItem {
+            display: flex;
+            width: auto;
+            h4 {
+              margin: 3px;
+              color: white;
+              border-radius: 6px;
+              background-color: $Violet;
+              padding: 5px;
+            }
+          }
+          .valuesDiv {
+            display: flex;
+            width: auto;
+            align-items: center;
+            h3 {
+              margin: 0px 10px;
+            }
           }
         }
-        .valuesDiv {
+        .detailsContainer{
           display: flex;
-          width: auto;
-          align-items: center;
-          h3 {
-            margin: 0px 10px;
+          justify-content: center;
+          .cardDetails{
+            width: auto;
+            border: 1px solid gray;
+            padding: 10px 25px;
+            border-radius: 20px;
+            text-align: center;
           }
         }
       }

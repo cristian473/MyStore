@@ -23,6 +23,31 @@
     .detailsFormContainer{
         display: flex;
         flex-direction: column;
+        input{
+            margin-bottom: 15px;
+        }
+        .envioDiv{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            label{
+                margin:0px 10px
+            }
+            input{
+                margin:0
+            }
+        }
+        .datosClienteDiv{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            label{
+                margin:0px 10px
+            }
+            input{
+                margin:0
+            }
+        }
     }
     .buttonsContainer{
         display: flex;
