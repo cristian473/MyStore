@@ -1,65 +1,69 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {EndOrden} from '../../actions/ventasActions'
+import { EndOrden } from '../../actions/ventasActions'
 import '../../styles/orderDiv.scss'
 import Item from '../catalogo/item'
 
-const OrdenVenta = ({idStore}) => {
-    const detailsInitialState = {detailsCompleted: false, envio : false, precioEnvio : '', cliente : false, datosCliente: {name: '', tel: '', direccion:''}}
-    const dataClientInitialState = {name :'', tel :'', direccion :''};
+const OrdenVenta = ({ idStore }) => {
+    const detailsInitialState = {
+        detailsCompleted: false,
+        envio: false,
+        precioEnvio: '',
+        ventaMayorista: false,
+        cliente: false,
+        datosCliente: { name: '', tel: '', direccion: '' }
+    }
+    const dataClientInitialState = { name: '', tel: '', direccion: '' };
     const dispatch = useDispatch();
     const productsOrden = useSelector(store => store.orden.productsOrden)
-    const [detailsForm , setDetailsForm]= useState(false);
-    const [details, setDetails] = useState (detailsInitialState)
-    const [dataClient, setDataClient] = useState (dataClientInitialState)
-
+    const [detailsForm, setDetailsForm] = useState(false);
+    const [details, setDetails] = useState(detailsInitialState)
+    const [dataClient, setDataClient] = useState(dataClientInitialState)
+    let subTotal = 0;
     const handlerClickEndOrden = () => {
-        if(detailsForm) { 
-            setDetails ({...details, detailsCompleted:true})
+        if (detailsForm) {
+            setDetails({ ...details, detailsCompleted: true })
         }
-        else{
+        else {
             setDetails(detailsInitialState);
             setDataClient(dataClientInitialState);
             setDetailsForm(false);
-            dispatch(EndOrden(idStore, productsOrden, subTotal, descuentoMayorista, details));
+            dispatch(EndOrden(idStore, productsOrden, subTotal, details));
         }
     }
-    let subTotal = 0;
-    let descuentoMayorista = 0;
 
-    function toggleFlag(value){
+    function toggleFlag(value) {
         var toggle = value ? false : true;
         return toggle;
-     }
+    }
 
-     useEffect(()=> {
-         if(details.detailsCompleted){
+    useEffect(() => {
+        if (details.detailsCompleted) {
             setDetails(detailsInitialState);
             setDataClient(dataClientInitialState);
             setDetailsForm(false);
-            dispatch(EndOrden(idStore, productsOrden, subTotal, descuentoMayorista, details));
-         } 
-        
-     },[details.detailsCompleted])
+            dispatch(EndOrden(idStore, productsOrden, subTotal, details));
+        }
+    }, [details.detailsCompleted])
 
     const handlerInputClienteChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         let newState = details;
         newState.datosCliente[name] = value;
-        setDetails (newState)
-        setDataClient ({...dataClient, [name]: value})
+        setDetails(newState)
+        setDataClient({ ...dataClient, [name]: value })
     }
 
     const handlerCheckboxChange = (e) => {
-        const {name} = e.target;
+        const { name } = e.target;
         let newValue = toggleFlag(details[name])
-        setDetails ({...details, [name]: newValue})
+        setDetails({ ...details, [name]: newValue })
     }
 
     const handlerInputChange = (e) => {
-        const {name, value} = e.target;
-        setDetails ({...details, [name]: value})
+        const { name, value } = e.target;
+        setDetails({ ...details, [name]: value })
     }
 
 
@@ -71,68 +75,59 @@ const OrdenVenta = ({idStore}) => {
                     <div className="ordenesDiv">
                         {productsOrden.map(e => {
                             subTotal += e.cantidad * e.precio;
-                            if (e.precioMayorista) descuentoMayorista += subTotal - e.precioMayorista;
-
-                            return (
-                                    <Item item={e}/>
-                            )
+                            return (<Item item={e} />)
                         }
                         )}
                     </div>
 
                     {detailsForm && (
                         <div className='detailsFormContainer'>
-                            <div className='envioDiv'> 
-                            <label for="envio">Envio</label>
-                            <input type='checkbox' onChange={handlerCheckboxChange} name='envio' />
+                            <div className='envioDiv'>
+                                <label for="envio">Envio</label>
+                                <input type='checkbox' onChange={handlerCheckboxChange} name='envio' />
                             </div>
                             {details.envio && (
                                 <>
-                                <label for="precioEnvio">Precio del envio</label>
-                                <input type="text" name='precioEnvio' onChange={handlerInputChange} value = {details.precioEnvio} />
+                                    <label for="precioEnvio">Precio del envio</label>
+                                    <input type="text" name='precioEnvio' onChange={handlerInputChange} value={details.precioEnvio} />
                                 </>
                             )}
+                            <div className="precioMayorista">
+                                <label for="precioMayorista">Venta Mayorista</label>
+                                <input type='checkbox' onChange={handlerCheckboxChange} name='ventaMayorista' />
+                            </div>
                             {/* <input type="text" name='envio' onChange={handlerInputChange} value
                              = {details.envio} /> */}
-                             <div className="datosClienteDiv">
-                            <label for="cliente">Datos del cliente</label>
-                            <input type='checkbox' onChange={handlerCheckboxChange} name='cliente' />
-
-                             </div>
+                            <div className="datosClienteDiv">
+                                <label for="cliente">Datos del cliente</label>
+                                <input type='checkbox' onChange={handlerCheckboxChange} name='cliente' />
+                            </div>
                             {details.cliente && (
                                 <>
                                     <label for="name">Nombre del cliente</label>
-                                    <input type="text" name='name' onChange={handlerInputClienteChange} value = {dataClient.name} />
+                                    <input type="text" name='name' onChange={handlerInputClienteChange} value={dataClient.name} />
                                     <label for="tel">Telefono</label>
-                                    <input type="text" name='tel' onChange={handlerInputClienteChange} value = {dataClient.tel} />
+                                    <input type="text" name='tel' onChange={handlerInputClienteChange} value={dataClient.tel} />
                                     <label for="direccion">Dirección</label>
-                                    <input type="text" name='direccion' onChange={handlerInputClienteChange} value = {dataClient.direccion} />        
+                                    <input type="text" name='direccion' onChange={handlerInputClienteChange} value={dataClient.direccion} />
                                 </>
                             )}
-    
                         </div>
                     )}
-                    
                     <div className="buttonsContainer">
-                                          
-
-                        
                         <div onClick={() => setDetailsForm(true)}>Agregar Detalles</div>
-                        
-
                         <div onClick={handlerClickEndOrden} >Finalizar venta</div>
                     </div>
-                    
                 </div>
-                
-            ):(
-                
-                <>
-                </>
-            )}
+
+            ) : (
+
+                    <>
+                    </>
+                )}
         </>
     )
-   
+
 }
 
 export default OrdenVenta

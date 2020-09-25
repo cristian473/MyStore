@@ -3,7 +3,7 @@ import ListaProductos from '../catalogo/listaProductos'
 import AddProductForm from '../gestion/addProductForm'
 import AddStoreForm from '../gestion/addStoreForm'
 import { useSelector, useDispatch } from 'react-redux'
-import {getStores} from '../../actions/userActions'
+import { getStores } from '../../actions/userActions'
 import { getProducts } from '../../actions/productActions'
 import BottonOptions from './bottonOptions'
 const Home = props => {
@@ -12,15 +12,14 @@ const Home = props => {
     const stores = useSelector(store => store.user.stores)
     const idStore = props.match.params.idStore
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem('idStore', idStore)
-    },[])
+    }, [])
 
     return (
         <>
-            <ListaProductos idStore= {idStore}/>
-            
-            <BottonOptions idStore= {idStore} />
+            <ListaProductos idStore={idStore} />
+            <BottonOptions idStore={idStore} />
         </>
     )
 }

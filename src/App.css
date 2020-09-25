@@ -45,10 +45,6 @@
   text-align: center;
 }
 
-form {
-  display: grid;
-}
-
 .details{
   display: contents;
 }
