@@ -4,7 +4,7 @@ html{
 }
 body {
   margin: 0;
-  font-family: 'Roboto', 'Oxygen',
+  font-family: 'Nunito', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,6 +21,24 @@ code {
   height: 100%;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;  
+}
+form input{
+  margin: 2px;
+}
+
 a{
   text-decoration:none;
+}
+a:hover{
+  text-decoration: none;
+}
+
+button{
+  background-color: transparent;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;  
 }

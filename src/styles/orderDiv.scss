@@ -21,12 +21,23 @@
         }
     }
     .detailsFormContainer{
-        display: flex;
-        flex-direction: column;
+        display: flex;       
+        flex-direction: column; 
         input{
             margin-bottom: 15px;
         }
         .envioDiv{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            label{
+                margin:0px 10px
+            }
+            input{
+                margin:0
+            }
+        }
+        .precioMayorista{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -54,10 +65,10 @@
         margin-bottom: 10px;
         div{
             margin: 0px 30px;
-            background-color: $Crema;
+            background-color: #893ef3;
             padding: 15px;
             border-radius: 10px;
-            color: #073b4c;
+            color: #ffffff;
             cursor: pointer;
             
         }

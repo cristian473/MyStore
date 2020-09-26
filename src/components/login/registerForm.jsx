@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {auth} from '../../firebase'
 import {Link} from 'react-router-dom'
+import '../../styles/formStyles.scss'
 import {useDispatch} from 'react-redux'
 import {registerUser} from '../../actions/userActions'
 
@@ -23,7 +24,7 @@ const RegisterForm = () => {
 
 
     return (
-        <div>
+        <div className='formLoginContainer'>
             <form onSubmit={handlerSubmit}>
                 <label>Nombre</label>
                 <input required type="text" name='name' onChange={handlerInputChange}/>

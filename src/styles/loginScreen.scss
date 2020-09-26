@@ -1,0 +1,27 @@
+.loginScreenContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-image: url('../../src/backgroundLoginjpg.jpg');    
+    .formsMsjContainer{
+        height: 50%;
+        display: flex;
+        width: 80%;
+        .titleContainer{
+            width: 50%;
+            color: ghostwhite;
+        }
+        .formContainer{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

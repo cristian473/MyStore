@@ -4,68 +4,67 @@
     width: 100%;
     .listaDiv{
         display: flex;
-        flex-direction: column;
-        width: auto;
+        margin-top: 40px;
+        width: 80%;        
         .productContainer{
-        display: flex;
-        justify-content: center;
-        height: 70px;
-        align-items: center;
-        background-color: #8338ec;
-        margin: 15px;
-        border-radius: 15px;
-        color: white;
-        
-        .details{
             display: flex;
+            justify-content: center;
+            height: auto;
+            width: 180px;
             flex-direction: column;
-            padding: 0px 20px;
-            align-items: flex-start;
-            .nameProduct{
-                font-weight: 600;
-                font-size: large;
-            }
-            .stockPrecio{
-                display: flex;
-                font-size: small;
-                align-items: flex-start;
-            }
-        }
-
-        .buttonContainer{
-            div{
-                
-                background-color: transparent;
-                border-color: #ff006e;
+            align-items: center;
+            background-color: #893ef3;
+            margin: 15px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0px 4px 10px -5px rgba(0,0,0,0.75);
+        
+            .imgContainer{                
                 border-radius: 6px;
-                padding:10px;
-                border: 1px solid;
-                margin: 10px;
-                cursor: pointer;
+                height: 100px;
+                width: 95%;
+                margin: 5px;
+                margin-top: 0;
+
+                img{
+                    height: 100%;
+                    width: 90%;
+                    border-radius: 4px;
+                }
             }
-            div:hover{
-                background-color: white;
-                border-color: black;
-                color: black;
-
+            .details{
+                display: flex;
+                flex-direction: column;
+                padding: 0px 20px;
+                align-items: center;
+                width: 100%;
+                .nameProduct{
+                    font-weight: 600;
+                    font-size: large;
+                }
+                .stockPrecio{
+                    display: flex;
+                    font-size: small;
+                    flex-direction: column;
+                    align-items: center;
+                }
             }
-        }
 
-        .imgContainer{
-            border: 1px solid blanchedalmond;
-            border-radius: 6px;
-            height: 50%;
-
-            img{
-                height: 100%;
-            }
-
+            .buttonContainer{
+                display: flex;
+                div{
+                    background-color: transparent;
+                    color: #e5d2ff;
+                    border-radius: 6px;
+                    padding: 0px 16px;
+                    font-size: 21px;
+                    border: 1px solid;
+                    margin: 10px;
+                    cursor: pointer;
+                }
+                div:hover{
+                    background-color: #a262fc;                                                        }
+            }                                    
         }
-        
-            
-        
-        
-        }
-    }
-    
+    }    
 }

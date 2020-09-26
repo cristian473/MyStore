@@ -38,11 +38,12 @@
       .movContainer{
         display: flex;
         flex-direction: column;
-        background-color: $Crema;
+        background-color: #ffffff;
         padding: 20px;
         border-radius: 6px;
-        border: 1px solid black;
+        border: 1px solid #e4d5f8;
         margin: 10px 0px;
+        box-shadow: 0px 0px 8px -5px rgba(0,0,0,0.75);
 
         .movDiv {
           display: flex;
@@ -64,7 +65,7 @@
             align-items: center;
             h3 {
               margin: 0px 10px;
-            }
+            }            
           }
         }
         .detailsContainer{
