@@ -9,7 +9,7 @@ const Producto = ({ datos }) => {
     return (
         <div className='productContainer'>
             <div className='imgContainer'>
-                <img src={'https://sommiercenter.com/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/C/O/CORAI160200_cenital.jpg'} />
+                <img src={datos.imagen} />
             </div>
             <div className='details'>
                 <div className='nameProduct'>

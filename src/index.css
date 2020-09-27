@@ -19,6 +19,7 @@ code {
 
 #root{
   height: 100%;
+  overflow: hidden;
 }
 
 form{
@@ -39,10 +40,13 @@ a:hover{
 
 button{
   background-color: transparent;
-  border: 1px solid #cfcfcf;
+  border: 1px solid #f1f1f1;
   border-radius: 6px;  
   
 }
 button:focus{
   outline-color: #cfcfcf;
+}
+button:hover{
+  background-color: #f1f1f1;
 }

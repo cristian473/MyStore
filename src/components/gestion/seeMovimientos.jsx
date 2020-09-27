@@ -54,11 +54,7 @@ const Movimientos = () => {
                                         <h3>${mov.total}</h3>
                                         <h3>${mov.ganancia}</h3>
                                     </div>
-
-
-
                                 </div>
-
                                 {indexItem === index && (
                                     <>
                                         {detailsVenta && (

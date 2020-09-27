@@ -1,24 +1,43 @@
 .NavBar {
-    display: flex;    
     width: 100%;
     height: 50px;
-    justify-content: flex-end;
-    align-items: center;
-    .buttonNav{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    .linksContainer{
+        display: flex;   
+        width: 40%; 
         background-color: #ffffff;
-        margin: 0px 5px;
-        padding: 5px;
-        border-radius: 6px;
-        border: none;
-        box-shadow: 0px 0px 6px -4px rgba(0, 0, 0, 0.75);
-        &:focus{
-            outline: none;            
-        }   
-        &:active{
-            box-shadow: 0px 4px 1px -5px rgba(0,0,0,0.75);
+        justify-content: center;
+        align-items: center;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;        
+        
+        a,
+        .buttonNav{
+            z-index: 10;            
+            padding: 10px 5px;
+        }        
+        .buttonNav{
+            background-color: #ffffff;
+            margin: 0px 5px;            
+            padding: 5px;
+            border-radius: 6px;
+            border: none;            
+            &:focus{
+                outline: none;            
+            }   
+            &:active{
+                box-shadow: 0px 4px 1px -5px rgba(0,0,0,0.75);
+            }
+            &:hover{
+                background-color: #f8f8f8;
+            }
         }
-        &:hover{
-            background-color: #f8f8f8;
-        }
+    }
+    svg{
+        position: absolute;
+        z-index: -1;          
+        top: 0;
     }
 }

@@ -2,9 +2,9 @@
 
 .storeSelectorScreen{
     justify-content: center;
-    display:flex;
-    align-items: center;
+    display:flex;    
     height: 100%;
+    overflow: hidden;
     .storeSelectorContainer{
         width: 30%;
         display: flex;       
@@ -12,29 +12,49 @@
         padding: 20px;        
         justify-content: center;
         text-align:center;
+        margin-top: 3em;
         .storeTitle{
-            div{
-               margin: 8px 0px; 
-               background-color: $violeta-oscuro;
-               padding: 5px;
-               border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            .storesContainer{
+                display: flex;
+                margin-top: 50px;
+                .storeDiv{
+                   margin: 8px 30px;
+                   border: 1px solid rgb(241, 241, 241); 
+                   width: 150px;
+                   background-color: #ffffff;
+                   padding: 15px;
+                   border-radius: 10px;
+                   display: flex;
+                   flex-direction: column;
+                   align-items: center;
+                   box-shadow: 0px 0px 8px -4px rgba(0,0,0,0.75);
+                    .iconStore{
+                        width: 60%;
+                    }
+                    span{
+                        margin-top: 8px;
+                        color: rgb(80, 80, 80);
+                        font-size: 17px;
+                        margin-bottom: 20px;
+                    }                                     
+                }
             }
-            
             a{
-                color: #f0f3bd;   
-            }
-            button{
-               margin: 8px 0px; 
-               border: 1px #f0f3bd solid;
-               padding: 5px;
-               background-color: #028090;
-               border-radius: 10px;
-               width: 100%;
-               color: #f0f3bd;
-               height: 40px;
-               font-size: larger;
+                width: 100%;
+                button{
+                    height: 40px;
+                    width: 80%;                    
+                }
+                .crearTiendaButton{
+                    width: 50%;
+                }
             }
         }
-    
+    }
+    .wavesBackground{
+        position: absolute;
+        bottom: 0;
     }
 }

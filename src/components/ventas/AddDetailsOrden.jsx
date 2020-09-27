@@ -11,24 +11,16 @@ const AddDetailsOrden = (props) => {
     return (
         <div>
             {products.map(e => {
-
                 total += e.cantidad * e.precio;
-
-                return(
+                return (
                     <div>
-                            <h4>{e.name}</h4>
-                            <h4>unidades: {e.cantidad}</h4>
-                        
-                        
-
+                        <h4>{e.name}</h4>
+                        <h4>unidades: {e.cantidad}</h4>
                     </div>
                 )
-
             }
-                
             )}
             <h2>total: {total}</h2>
-
         </div>
     )
 

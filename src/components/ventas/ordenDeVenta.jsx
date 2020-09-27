@@ -66,8 +66,6 @@ const OrdenVenta = ({ idStore }) => {
         setDetails({ ...details, [name]: value })
     }
 
-
-
     return (
         <>
             {productsOrden.length > 0 ? (
@@ -92,10 +90,6 @@ const OrdenVenta = ({ idStore }) => {
                                     <input type="text" name='precioEnvio' onChange={handlerInputChange} value={details.precioEnvio} />
                                 </>
                             )}
-                            <div className="precioMayorista">
-                                <label for="precioMayorista">Venta Mayorista</label>
-                                <input type='checkbox' onChange={handlerCheckboxChange} name='ventaMayorista' />
-                            </div>
                             {/* <input type="text" name='envio' onChange={handlerInputChange} value
                              = {details.envio} /> */}
                             <div className="datosClienteDiv">
@@ -112,6 +106,10 @@ const OrdenVenta = ({ idStore }) => {
                                     <input type="text" name='direccion' onChange={handlerInputClienteChange} value={dataClient.direccion} />
                                 </>
                             )}
+                            <div className="precioMayorista">
+                                <label for="precioMayorista">Venta Mayorista</label>
+                                <input type='checkbox' onChange={handlerCheckboxChange} name='ventaMayorista' />
+                            </div>
                         </div>
                     )}
                     <div className="buttonsContainer">

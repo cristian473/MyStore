@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { addProduct } from '../../actions/productActions'
 import { useSelector } from 'react-redux'
 import '../../styles/addProductForm.scss'
+import FileBase64 from 'react-file-base64';
 
 const AddProductForm = () => {
     const user = useSelector(store => store.userLogged)
@@ -15,12 +16,18 @@ const AddProductForm = () => {
         costoMaterial: '',
         idTienda: idStore
     }
-
+    const [nameImage, setNameImage] = useState('')
     const [producto, setProduct] = useState(initialState)
 
     const handlerInputChange = (e) => {
         const { name, value } = e.target;
         setProduct({ ...producto, [name]: value })
+    }
+
+    const handlerImageUpload = (files) => {
+        console.log(files)
+        setNameImage(files.name)
+        setProduct({ ...producto, imagen: files.base64 })
     }
 
     const handlerSubmit = (e) => {
@@ -38,11 +45,14 @@ const AddProductForm = () => {
                 <form onSubmit={(e) => handlerSubmit(e)} >
                     <input type="text" name='name' placeholder='Nombre' value={producto.name} onChange={handlerInputChange} />
                     <input type="text" name='stock' value={producto.stock} placeholder='Stock' onChange={handlerInputChange} />
-                    <input type="text" name='imagen' value={producto.imagen} placeholder='Imagen' onChange={handlerInputChange} />
                     <input type="text" name='precio' value={producto.precio} placeholder='Precio' onChange={handlerInputChange} />
                     <input type="text" name='precioMayorista' value={producto.precioMayorista} placeholder='Precio Mayorista' onChange={handlerInputChange} />
                     <input type="text" name='costoMaterial' value={producto.costoMaterial} placeholder='Costo del material' onChange={handlerInputChange} />
-                    <button> submit</button>
+                    <label>{`${producto.imagen ? nameImage : 'Cargar una imagen'}`}</label>
+                    <FileBase64
+                        onDone={handlerImageUpload}
+                    />
+                    <button>Cargar</button>
                 </form>
             </div>
         </div>

@@ -19,18 +19,21 @@ import AddPurchaseForm from '../src/components/gestion/addPurchaseForm'
 function App() {
   const user = useSelector(store => store.user)
   const userLogged = useSelector(store => store.userLogged)
-
+  const idStoree = useSelector(store => store)
+  const idStore = localStorage.getItem('idStore')
   const renderLoginScreen = () => {
     let title = 'Hola! Tanto tiempo.', description = 'naslkdjna'
     return (<LoginScreen title={title} description={description} />)
 
   }
+  console.log(idStoree);
+
 
   return (
     <BrowserRouter>
       {userLogged.loged ? (
         <Fragment>
-          <NavBar />
+          {idStore && <NavBar />}
           <div className='bodyContainer'>
             <Switch>
               <Redirect exact from='/login' to='/' />
