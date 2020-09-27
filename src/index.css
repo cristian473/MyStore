@@ -41,4 +41,8 @@ button{
   background-color: transparent;
   border: 1px solid #cfcfcf;
   border-radius: 6px;  
+  
+}
+button:focus{
+  outline-color: #cfcfcf;
 }

@@ -1,20 +1,26 @@
+@import './vars.scss';
+
 .formLoginContainer{
     padding: 40px;
     border-radius: 20px;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: 1px solid rgb(242, 227, 255);
     margin-bottom: 100px;
+    box-shadow: 0px 4px 10px -5px rgba(0,0,0,0.75);
+    z-index: 5;
+    background-color: #ffffff;
     form{
         display: flex;
         flex-direction: column;
         align-items: center;
         input{
-            margin:0;    
+            margin: 10px 0px;   
             border:none;        
             border-bottom: 2px solid rgb(243, 242, 242);                
             background-color: #ffffff;            
             &:focus{
-                outline: none;
-                border-color: red;
+                outline-style: none;
+                border-bottom: 1px solid rgb(243, 242, 242);
             }
             &::placeholder{
                 text-align: center;
@@ -24,18 +30,27 @@
             border:none
         }
 
-        button{
-            width: 80%;
-            padding: 3px;
-            margin: 2px;
-            a{
+        .loginButton{
+            margin-top: 15px;
+        }
+        a{            
+            text-decoration: none;
+            &:hover{
                 color: white;
-                text-decoration: none;
-                &:hover{
-                    color: white;
-                }
+            }
+            button{
+                width: 160px;
+                padding: 3px;
+                margin-top: 10px;                
             }
         }
+        button{
+            width: 160px;
+            padding: 3px;        
+            margin-top: 10px;    
+        }
+
+
         // button{
         //     margin: 5px;
         //     background-color: #06f;

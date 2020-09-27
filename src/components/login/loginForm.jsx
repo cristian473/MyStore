@@ -28,8 +28,8 @@ const LoginForm = () => {
                 <input focus={false} onChange={handlerInputChange} placeholder='Email' type="email" name='email' />
                 {/* <label>Contraseña</label> */}
                 <input onChange={handlerInputChange} placeholder='Password' type="password" name='password' />
-                <button className='btn btn-secondary' type='submit' onClick={handlerSubmit}>Iniciar sesion</button>
-                <button className='btn btn-secondary'><Link to='/registro'>Registrarse</Link></button>
+                <button className='loginButton' type='submit' onClick={handlerSubmit}>Iniciar sesion</button>
+                <Link to='/registro'><button>Registrarse</button></Link>
             </form>
             <div className="buttonsContainer">
             </div>

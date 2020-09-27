@@ -1,3 +1,5 @@
+@import './vars.scss';
+
 .loginScreenContainer{
     height: 100%;
     width: 100%;
@@ -5,17 +7,14 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    background-image: url('../../src/backgroundLoginjpg.jpg');    
+    overflow: hidden;
     .formsMsjContainer{
         height: 50%;
         display: flex;
         width: 80%;
         .titleContainer{
             width: 50%;
-            color: ghostwhite;
+            color: $violeta-oscuro;
         }
         .formContainer{
             width: 50%;
@@ -23,5 +22,10 @@
             justify-content: center;
             align-items: center;
         }
+    }
+    
+    svg{
+        position: absolute;
+        bottom: 0;       
     }
 }
