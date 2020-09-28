@@ -10,10 +10,8 @@ const Movimientos = () => {
     const idStore = localStorage.getItem('idStore')
     const [detailsVenta, setDetailsVenta] = useState('');
     const [indexItem, setIndex] = useState('');
-    console.log(movs)
 
     const handlerSeeDetails = (mov) => {
-        console.log(mov)
         setDetailsVenta(mov)
     }
 
@@ -36,7 +34,7 @@ const Movimientos = () => {
 
                     {movs.length > 0 ? (
                         movs.map((mov, index) => (
-                            <div className='movContainer'>
+                            <div key={index} className='movContainer'>
                                 <div className='movDiv'>
                                     <div className="containerItem">
                                         {mov.items.map(item =>
@@ -60,10 +58,9 @@ const Movimientos = () => {
                                         {detailsVenta && (
                                             <div className='detailsContainer'>
                                                 <div className='cardDetails'>
-                                                    {console.log(detailsVenta)}
                                                     {/* <h2>{detailsVenta.fecha}</h2> */}
                                                     <div className='itemsContainer'>
-                                                        {detailsVenta.items.map(item => <Item item={item} />)}
+                                                        {detailsVenta.items.map((item, i) => <Item key={i} item={item} />)}
                                                     </div>
                                                     {detailsVenta.envío ? (
                                                         <h3>Envío: {detailsVenta.precioEnvio}</h3>

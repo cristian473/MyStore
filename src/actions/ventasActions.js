@@ -10,16 +10,15 @@ export const sumUnidadVenta = (datos) => {
     return (dispatch) => {
         dispatch({ type: ADD_PRODUCT_ORDEN, payload: newData })
         dispatch({ type: REST_STOCK_STATE, payload: datos })
-
     }
 
 }
 
-export const resUnidadVenta = (id, stock) => {
-    stock--;
-    db.collection('productos').doc(id).update({
-        stock: stock
-    })
+export const resUnidadVenta = (datos) => {
+    return (dispatch) => {
+        dispatch({ type: 'REST_PRODUCT_ORDEN', payload: datos })
+        dispatch({ type: 'SUM_STOCK_STATE', payload: datos })
+    }
 }
 
 export const EndOrden = (idTienda, orden, subTotal, details) => {

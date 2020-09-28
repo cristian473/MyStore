@@ -8,7 +8,6 @@ const initialState = {
 
 export function getData(state = initialState, action) {
 
-    // console.log(action.payload)
     switch (action.type) {
 
         case GET_PRODUCTS:
@@ -24,8 +23,14 @@ export function getData(state = initialState, action) {
             return {
                 ...state
             }
+        case 'SUM_STOCK_STATE':
+            const indexElemetToSum = state.products.findIndex(e => e.id === action.payload.id)
+            state.products[indexElemetToSum].stock++;
+
+            return {
+                ...state
+            }
         case 'DELETE_PRODUCT':
-            console.log(action.payload);
             return {
                 ...state,
                 products: state.products.filter(el => el.id !== action.payload)

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { EndOrden, getGastos, getVentas } from '../../actions/ventasActions'
 import '../../styles/orderDiv.scss'
 import Item from '../catalogo/item'
@@ -73,9 +72,9 @@ const OrdenVenta = ({ idStore }) => {
             {productsOrden.length > 0 ? (
                 <div className='ordenesContainerDiv'>
                     <div className="ordenesDiv">
-                        {productsOrden.map(e => {
+                        {productsOrden.map((e, i) => {
                             subTotal += e.cantidad * e.precio;
-                            return (<Item item={e} />)
+                            return (<Item key={i} item={e} />)
                         }
                         )}
                     </div>

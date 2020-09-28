@@ -79,6 +79,7 @@
                     border: 1px solid;
                     margin: 10px;
                     cursor: pointer;
+                    user-select: none;
                 }
                 div:hover{
                     background-color: #a262fc;                                                        }

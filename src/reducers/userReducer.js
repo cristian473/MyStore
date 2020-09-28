@@ -1,17 +1,17 @@
-import {REGISTERED, GET_STORES, LOGGED, GET_MOVIMIENTOS} from '../constants/userConstants'
+import { REGISTERED, GET_STORES, LOGGED, GET_MOVIMIENTOS } from '../constants/userConstants'
 
 const initialState = {
     user: {},
     stores: [],
-    items:[],
+    items: [],
     registered: false,
     loged: false,
-    movimientos:[]
+    movimientos: []
 }
 
-export function userLoggedState (state = initialState, action){
+export function userLoggedState(state = initialState, action) {
     const userLogged = JSON.parse(localStorage.getItem('userLogged') || null);
-    if (userLogged){
+    if (userLogged) {
         return {
             ...state,
             user: userLogged,
@@ -22,27 +22,27 @@ export function userLoggedState (state = initialState, action){
 }
 
 
-export function useReducer (state = initialState, action) {
+export function useReducer(state = initialState, action) {
 
-    // console.log(action.payload)
     switch (action.type) {
 
         case REGISTERED:
-            return {...state,
-                    user: action.payload,
-                    registered: true
-                }
+            return {
+                ...state,
+                user: action.payload,
+                registered: true
+            }
         case LOGGED:
-            return{
+            return {
                 ...state,
                 loged: true
             }
-        case GET_STORES :
+        case GET_STORES:
             return {
                 ...state,
                 stores: action.payload
             }
-        case GET_MOVIMIENTOS :
+        case GET_MOVIMIENTOS:
             return {
                 ...state,
                 movimientos: action.payload
@@ -50,7 +50,7 @@ export function useReducer (state = initialState, action) {
 
     }
 
-        
+
 
     return state;
 }

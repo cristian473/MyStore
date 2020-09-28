@@ -3,6 +3,13 @@ import Swal from 'sweetalert2'
 
 export const addProduct = async (producto) => {
         await db.collection("productos").doc().set(producto)
+
+        Swal.fire(
+                'Exito!',
+                'Producto Cargado',
+                "success"
+        )
+        return;
 }
 
 export const getProducts = (id) => {

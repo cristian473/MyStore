@@ -1,13 +1,9 @@
 import React, { Fragment } from 'react';
 import './App.css';
-import ListaProductos from '../src/components/catalogo/listaProductos'
 import AddProductForm from '../src/components/gestion/addProductForm'
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import LoginForm from './components/login/loginForm'
 import LoginScreen from './components/login/loginScreen'
-import RegisterForm from './components/login/registerForm'
-import { useSelector, useDispatch } from 'react-redux';
-import { auth } from './firebase';
+import { useSelector } from 'react-redux';
 import Home from '../src/components/home/home'
 import SelectStore from '../src/components/home/selectStore'
 import AddDetailsOrden from './components/ventas/AddDetailsOrden'
@@ -19,15 +15,12 @@ import AddPurchaseForm from '../src/components/gestion/addPurchaseForm'
 function App() {
   const user = useSelector(store => store.user)
   const userLogged = useSelector(store => store.userLogged)
-  const idStoree = useSelector(store => store)
   const idStore = localStorage.getItem('idStore')
   const renderLoginScreen = () => {
     let title = 'Hola! Tanto tiempo.', description = 'naslkdjna'
     return (<LoginScreen title={title} description={description} />)
 
   }
-  console.log(idStoree);
-
 
   return (
     <BrowserRouter>

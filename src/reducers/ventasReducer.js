@@ -7,12 +7,10 @@ const initialState = {
 
 export function ventasReducer(state = initialState, action) {
 
-    // console.log(action.payload)
     switch (action.type) {
 
         case ADD_PRODUCT_ORDEN:
             const indexElemet = state.productsOrden.findIndex(e => e.id === action.payload.id)
-
             if (indexElemet !== -1) {
                 state.productsOrden[indexElemet].cantidad++;
                 return {
@@ -24,6 +22,25 @@ export function ventasReducer(state = initialState, action) {
                 state.productsOrden.push(action.payload)
                 return state
             }
+        case 'REST_PRODUCT_ORDEN':
+            const indexElemetToRest = state.productsOrden.findIndex(el => el.id === action.payload.id)
+            if (indexElemetToRest !== -1) {
+                if (state.productsOrden[indexElemetToRest].cantidad === 1) {
+                    state.productsOrden.splice(indexElemetToRest, 1)
+                    return {
+                        ...state,
+                    }
+                }
+                else {
+                    state.productsOrden[indexElemetToRest].cantidad--
+                    return {
+                        ...state
+                    }
+                }
+            }
+
+
+
 
         case 'CLEAN_ORDEN':
             return {
@@ -31,7 +48,6 @@ export function ventasReducer(state = initialState, action) {
                 productsOrden: []
             }
         case 'GET_GASTOS':
-            console.log(action)
             return {
                 ...state,
                 gastos: action.payload

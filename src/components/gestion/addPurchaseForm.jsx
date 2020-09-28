@@ -19,11 +19,9 @@ const AddPurchaseForm = () => {
         let product = products.filter(el => el.id === id).flat()
         product[0].cantidad = 0;
         product[0].ubi = i;
-        console.log(product);
         let newProductsSelected = [...productsSelected]
         let newArray = newProductsSelected.flat()
         newArray[i] = product[0]
-        console.log(newArray);
         setProductsSelected(newArray);
     }
     const handlerSelectedChange = (e, i) => {
@@ -151,7 +149,7 @@ const AddPurchaseForm = () => {
                 {countDiv?.map((div, i) => (
                     <>
                         {(productsSelected[i] || checkBoxes[i]) ? (
-                            <div className='itemAdd'>
+                            <div className='itemAdd' key={i}>
                                 {(otrosGastos[i]?.ubi === i) ?
                                     <>
                                         <div className='otroGastoDiv'>
@@ -164,8 +162,8 @@ const AddPurchaseForm = () => {
                                     :
                                     <>
                                         <select value={productsSelected[i]?.id} onChange={(e) => handlerSelectedChange(e, i)}>
-                                            {products.map((pro) =>
-                                                <option value={pro.id}>
+                                            {products.map((pro, i) =>
+                                                <option key={i} value={pro.id}>
                                                     {pro.name}
                                                 </option>
                                             )}
@@ -182,15 +180,15 @@ const AddPurchaseForm = () => {
                                 }
                             </div>
                         ) : (
-                                <div className='itemAdd'>
+                                <div className='itemAdd' key={i}>
                                     <div className="otroGastoDiv">
                                         <label for='checkOtroGasto'>Otro gasto</label>
                                         <input id='checkOtroGasto' type="checkbox" onChange={() => checkTheBox(i)} />
                                     </div>
                                     <select onChange={(e) => handlerSelectChange(e, i)}>
                                         <option value='' >Seleccione un articulo</option>
-                                        {products.map((pro) =>
-                                            <option value={pro.id}>
+                                        {products.map((pro, i) =>
+                                            <option key={i} value={pro.id}>
                                                 {pro.name}
                                             </option>)}
                                     </select>

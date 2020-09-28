@@ -4,16 +4,15 @@ const AddDetailsOrden = (props) => {
 
     const idTienda = props.match.params.idStore;
     const products = props.location.state.productos
-    console.log(products)
 
     let total = 0;
 
     return (
         <div>
-            {products.map(e => {
+            {products.map((e, i) => {
                 total += e.cantidad * e.precio;
                 return (
-                    <div>
+                    <div key={i}>
                         <h4>{e.name}</h4>
                         <h4>unidades: {e.cantidad}</h4>
                     </div>

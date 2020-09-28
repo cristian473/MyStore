@@ -34,8 +34,8 @@ const SelectStore = () => {
                             <div className='storeTitle'>
                                 <h3>Tus Tiendas</h3>
                                 <div className="storesContainer">
-                                    {stores.map(store => (
-                                        <div className='storeDiv'>
+                                    {stores.map((store, i) => (
+                                        <div key={i} className='storeDiv'>
                                             <img className='iconStore' src={iconStore} alt="" />
                                             <span>{store.name}</span>
                                             <Link to={'/' + store.id + '/dashboard'}><button>Abrir</button></Link>

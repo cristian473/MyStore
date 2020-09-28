@@ -1,10 +1,7 @@
 import { auth, db } from '../firebase'
-import { Redirect } from 'react-router-dom'
-import { GET_STORES, REGISTERED, LOGGED } from '../constants/userConstants'
-import firebase from 'firebase/app'
+import { GET_STORES, LOGGED } from '../constants/userConstants'
 import Swal from 'sweetalert2'
 import 'firebase/auth'
-import { GET_PRODUCTS } from '../constants/productConstants'
 
 export const registerUser = (data) => {
     return (dispatch) => {
@@ -81,7 +78,6 @@ export const getStores = (id) => {
         db.collection('stores').where('idUser', '==', id).get()
             .then((stores) => {
                 if (stores.empty) {
-                    console.log('no tiene tiendas cargadas aún')
                     return;
                 }
                 else {

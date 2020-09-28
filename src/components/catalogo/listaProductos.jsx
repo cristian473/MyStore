@@ -12,13 +12,13 @@ const ListaProductos = ({ idStore }) => {
     useEffect(() => {
         dispatch(getProducts(idStore));
     }, [])
-    console.log(products)
     return (
         <div className='proContainer'>
             <div className='listaDiv'>
                 {products.length > 0 ? (
-                    products.map(pro => (
+                    products.map((pro, i) => (
                         <Producto
+                            key={i}
                             datos={pro}
                         />
                     ))

@@ -25,14 +25,13 @@ const AddProductForm = () => {
     }
 
     const handlerImageUpload = (files) => {
-        console.log(files)
         setNameImage(files.name)
         setProduct({ ...producto, imagen: files.base64 })
     }
 
-    const handlerSubmit = (e) => {
+    const handlerSubmit = async (e) => {
         e.preventDefault()
-        addProduct(producto)
+        await addProduct(producto)
         setProduct(initialState)
 
     }
@@ -52,7 +51,7 @@ const AddProductForm = () => {
                     <FileBase64
                         onDone={handlerImageUpload}
                     />
-                    <button>Cargar</button>
+                    <button type='submit'>Cargar</button>
                 </form>
             </div>
         </div>

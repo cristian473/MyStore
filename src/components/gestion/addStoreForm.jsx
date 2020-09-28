@@ -25,7 +25,6 @@ const AddStoreForm = () => {
 
     const handlerSubmit = (e) => {
         e.preventDefault()
-        console.log(store)
         addStore(store)
         setState(initialState)
 
