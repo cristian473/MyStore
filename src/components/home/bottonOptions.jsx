@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getVentas } from '../../actions/ventasActions'
+import { getGastos, getVentas } from '../../actions/ventasActions'
 import OrdenVenta from '../ventas/ordenDeVenta'
 import { Link } from 'react-router-dom'
 import '../../styles/bottonOptions.scss'
 const BottonOptions = ({ idStore }) => {
     const movs = useSelector((store) => store.user.movimientos)
+    const gastos = useSelector((store) => store.orden.gastos)
     const dispatch = useDispatch()
     const [totales, setTotales] = useState({ ingresos: 0, ganancia: 0, gastos: 0, balance: 0 })
 
     useEffect(() => {
         dispatch(getVentas(idStore))
+        dispatch(getGastos(idStore))
     }, [])
 
     useEffect(() => {
         if (movs.length > 0) {
-            let ganaciaTotal = 0, gastosTotal = 5800, ingresosTotal = 0, balance = 0;
+            let ganaciaTotal = 0, gastosTotal = 0, ingresosTotal = 0, balance = 0;
             movs.forEach(el => {
                 ganaciaTotal += parseInt(el.ganancia)
                 ingresosTotal += parseInt(el.total)
             });
+            gastos.forEach((el) => {
+                gastosTotal += parseInt(el.gastoTotal)
+            })
             balance = ingresosTotal - gastosTotal
             setTotales({ ingresos: ingresosTotal, ganancia: ganaciaTotal, gastos: gastosTotal, balance: balance })
         }
-    }, [movs])
+    }, [movs, gastos])
 
     return (
         <div className='bottonContainer'>

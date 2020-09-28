@@ -9,40 +9,75 @@
         color: #ffffff;
         margin-bottom: 40px;
     }
-    .itemAdd{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 60%;        
-        margin: 20px;
-        border-radius: 15px;
-        padding: 20px;
-        background-color: #ffffff;
-        border: 1px solid #f5f5f5;
-        box-shadow: 0px 0px 8px -5px rgba(0,0,0,0.75);
-        input{
-            margin: 0px 15px;
-            width: 100px;
-            height: 30px;
+    .itemsContainer{
+        max-height: 66vh;
+        overflow: auto;
+        width: 40%;
+        padding: 0 10px;
+        &::-webkit-scrollbar{
+            width: 1px;
         }
-        select{
-            height: 30px;
-        }
-        label{
-            margin: 0;
-        }
-        .otroGastoDiv{
+        .itemAdd{
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-right: 30px;
+            width: 100%;        
+            margin: 20px 0;
+            border-radius: 15px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #f5f5f5;
+            box-shadow: 0px 0px 8px -5px rgba(0,0,0,0.75);
+            input{
+                margin: 0px 15px;
+                width: 100px;
+                height: 30px;        
+            }
+            select{
+                height: 30px;
+            }
+            label{
+                margin: 0;
+            }
+            .otroGastoDiv{
+                display: flex;            
+                align-items: center;
+                margin-right: 30px;
+                input{
+                    width:20px;
+                    height:18px;
+                }
+            }
+            img{
+                width: 60px;
+                max-height: 60px;
+            }
+            span{
+                margin: 0 10px;
+            }
+        }   
+    }
+    .buttonsContainer{
+        display: flex; 
+        width: 38vw;       
+        .buttons{
+            width: 74%;
+            display: flex;
+            justify-content: center;
+            button{
+                font-size: 21px;
+                margin: 0 10px;
+                padding: 0 13px;
+            }
         }
-        img{
-            width: 60px;
-            max-height: 60px;
+        .endButton{
+            background-color: $violeta-oscuro;
+            color: #ffffff;
+            height: 40px;
+            font-weight: 600;
+            &.disable{
+                pointer-events: none;
+            }
         }
-        span{
-            margin: 0 10px;
-        }
-    }   
+    }
 }

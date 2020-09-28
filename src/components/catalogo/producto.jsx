@@ -1,13 +1,22 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { sumUnidadVenta, resUnidadVenta } from '../../actions/ventasActions'
+import trashIcon from '../../media/trashIcon.svg'
+import { deleteProduct } from '../../actions/productActions'
 
 const Producto = ({ datos }) => {
 
     const dispatch = useDispatch();
 
+    const handlerDeleteChange = (id) => {
+        dispatch(deleteProduct(id))
+    }
+
     return (
         <div className='productContainer'>
+            <div className="optionButtons">
+                <img src={trashIcon} alt="trashIcon" onClick={() => handlerDeleteChange(datos.id)} />
+            </div>
             <div className='imgContainer'>
                 <img src={datos.imagen} />
             </div>

@@ -4,8 +4,12 @@
     width: 100%;
     .listaDiv{
         display: flex;
+        justify-content: center;
         margin-top: 40px;
-        width: 80%;        
+        width: 80%;  
+        h2{
+            margin-top: 30px;
+        }      
         .productContainer{
             display: flex;
             justify-content: center;
@@ -18,7 +22,21 @@
             border-radius: 15px;
             color: white;
             box-shadow: 0px 4px 10px -5px rgba(0,0,0,0.75);
-        
+            .optionButtons{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                img{
+                    padding: 5px;
+                    cursor: pointer;   
+                    margin: 0px 15px 15px 0;                 
+                    width: 25px;
+                    border-radius: 10px;
+                    &:hover{
+                        background-color: #e5d2ff;                        
+                    }
+                }
+            }
             .imgContainer{                
                 border-radius: 6px;
                 height: 100px;

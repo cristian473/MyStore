@@ -12,7 +12,7 @@ const ListaProductos = ({ idStore }) => {
     useEffect(() => {
         dispatch(getProducts(idStore));
     }, [])
-
+    console.log(products)
     return (
         <div className='proContainer'>
             <div className='listaDiv'>

@@ -1,6 +1,7 @@
 import { addStore } from '../../actions/userActions'
 import { useSelector } from 'react-redux'
 import React, { useState } from 'react'
+import '../../styles/AddStoreForm.scss'
 
 const AddStoreForm = () => {
 
@@ -32,12 +33,14 @@ const AddStoreForm = () => {
 
 
     return (
-        <form onSubmit={(e) => handlerSubmit(e)} >
-            <input type="text" name='name' placeholder='Nombre de la tienda' value={store.name} onChange={handlerInputChange} />
-            <input type="text" name='address' value={store.address} placeholder='Direccion' onChange={handlerInputChange} />
-            <input type="text" name='phone' value={store.phone} placeholder='Nro de telefono' onChange={handlerInputChange} />
-            <button type='submit' > submit</button>
-        </form>
+        <div className="addStoreContainer">
+            <form onSubmit={(e) => handlerSubmit(e)} >
+                <input type="text" name='name' placeholder='Nombre de la tienda' value={store.name} onChange={handlerInputChange} />
+                <input type="text" name='address' value={store.address} placeholder='Direccion' onChange={handlerInputChange} />
+                <input type="text" name='phone' value={store.phone} placeholder='Nro de telefono' onChange={handlerInputChange} />
+                <button type='submit' >Cargar tienda</button>
+            </form>
+        </div>
     )
 
 }

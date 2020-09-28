@@ -42,7 +42,6 @@ export const EndOrden = (idTienda, orden, subTotal, details) => {
             })
             total = newSubtotal;
         }
-        debugger;
         ganancia = total - sumaCosto + parseInt(precioEnvio);
         return ganancia;
     }
@@ -109,4 +108,51 @@ export const getVentas = (idTienda) => {
                 dispatch({ type: 'GET_MOVIMIENTOS', payload: docs })
             })
     }
+}
+
+export const getGastos = (idStore) => {
+    return (dispatch) => {
+        db.collection("gastos")
+            .where('idTienda', '==', idStore)
+            .get().then(querySnapshot => {
+                const docs = []
+                querySnapshot.forEach(doc => {
+                    docs.push({ ...doc.data(), id: doc.id })
+                })
+                dispatch({ type: 'GET_GASTOS', payload: docs })
+            })
+    }
+}
+
+export const pushGasto = (mov, productos) => {
+
+    let antiguosProducts = [...productos];
+    if (mov.products.length > 0) {
+        mov.products.forEach((item) => {
+            let index = antiguosProducts.findIndex(el => el.id === item.id);
+            let newStock = antiguosProducts[index].stock + parseInt(item.cantidad);
+            antiguosProducts[index].stock = newStock
+            db.collection('productos').doc(antiguosProducts[index].id).update({
+                stock: newStock
+            })
+        })
+    }
+
+    db.collection('gastos').doc().set(mov)
+        .then(() => {
+            Swal.fire(
+                'Exito',
+                'Gasto Cargado',
+                'success'
+            ).then(() => {
+
+            })
+        })
+        .catch(() => {
+            Swal.fire(
+                'Error',
+                'Algo ocurrió, por favor vuelva a intentar',
+                'error'
+            )
+        })
 }

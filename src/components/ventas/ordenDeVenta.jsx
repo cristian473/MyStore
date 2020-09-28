@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { EndOrden } from '../../actions/ventasActions'
+import { EndOrden, getGastos, getVentas } from '../../actions/ventasActions'
 import '../../styles/orderDiv.scss'
 import Item from '../catalogo/item'
 
@@ -30,6 +30,8 @@ const OrdenVenta = ({ idStore }) => {
             setDataClient(dataClientInitialState);
             setDetailsForm(false);
             dispatch(EndOrden(idStore, productsOrden, subTotal, details));
+            dispatch(getVentas(idStore))
+            dispatch(getGastos(idStore))
         }
     }
 
