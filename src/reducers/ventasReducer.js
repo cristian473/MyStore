@@ -2,6 +2,7 @@ import { ADD_PRODUCT_ORDEN } from '../constants/productConstants'
 
 const initialState = {
     productsOrden: [],
+    productsInOrden: {},
     gastos: []
 }
 
@@ -38,10 +39,6 @@ export function ventasReducer(state = initialState, action) {
                     }
                 }
             }
-
-
-
-
         case 'CLEAN_ORDEN':
             return {
                 ...state,
@@ -51,6 +48,11 @@ export function ventasReducer(state = initialState, action) {
             return {
                 ...state,
                 gastos: action.payload
+            }
+        case 'CLEAN_AMOUNT':
+            return {
+                ...state,
+                productsInOrden: action.payload
             }
     }
     return state;

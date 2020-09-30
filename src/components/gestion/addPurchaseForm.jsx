@@ -199,7 +199,7 @@ const AddPurchaseForm = () => {
             </div>
             <div className='buttonsContainer'>
                 <div className="buttons">
-                    <button onClick={handlerRestDiv}>-</button>
+                    <button className={`${countDiv.length === 1 && 'disable'}`} onClick={handlerRestDiv}>-</button>
                     <button onClick={handlerSumDiv}>+</button>
                 </div>
                 <button

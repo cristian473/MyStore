@@ -31,7 +31,7 @@
                 flex-direction: column;
                 text-align: center;
                 justify-content: center;
-
+                user-select: none;
                 h4{
                     margin:0;
                     color: #351b58;
@@ -55,7 +55,8 @@
                 margin: 5px;
                 border-radius: 10px;
                 border: 1px solid #ebebeb;
-                color:    #351b58; 
+                color:#351b58;
+                user-select: none;
                 &:hover{
                     background-color: #f8f8f8;
                 }               

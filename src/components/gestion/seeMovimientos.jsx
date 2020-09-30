@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getVentas } from '../../actions/ventasActions'
 import Item from '../catalogo/item'
+import moment from 'moment'
 import '../../styles/movsStyles.scss'
 const Movimientos = () => {
-
     const movs = useSelector(store => store.user.movimientos)
     const dispatch = useDispatch();
     const idStore = localStorage.getItem('idStore')
@@ -38,9 +38,7 @@ const Movimientos = () => {
                                 <div className='movDiv'>
                                     <div className="containerItem">
                                         {mov.items.map(item =>
-
                                             <Item item={item} />
-
                                         )}
                                     </div>
                                     <div className="valuesDiv">
@@ -56,12 +54,20 @@ const Movimientos = () => {
                                 {indexItem === index && (
                                     <>
                                         {detailsVenta && (
+
                                             <div className='detailsContainer'>
+                                                {detailsVenta.cliente &&
+                                                    (detailsVenta.cliente.name || detailsVenta.cliente.direccion || detailsVenta.cliente.tel) &&
+                                                    (
+                                                        <div className="cardDetails">
+                                                            {detailsVenta.cliente.name && <h5><strong>Cliente:</strong>  {detailsVenta.cliente.name}</h5>}
+                                                            {detailsVenta.cliente.direccion && <h5><strong>Dirección:</strong> {detailsVenta.cliente.direccion}</h5>}
+                                                            {detailsVenta.cliente.tel && <h5><strong> Tel: </strong> {detailsVenta.cliente.tel}</h5>}
+                                                        </div>
+                                                    )}
+
                                                 <div className='cardDetails'>
-                                                    {/* <h2>{detailsVenta.fecha}</h2> */}
-                                                    <div className='itemsContainer'>
-                                                        {detailsVenta.items.map((item, i) => <Item key={i} item={item} />)}
-                                                    </div>
+                                                    <h3>Fecha: {moment(detailsVenta.fecha).format('DD/MM/YYYY')}</h3>
                                                     {detailsVenta.envío ? (
                                                         <h3>Envío: {detailsVenta.precioEnvio}</h3>
                                                     ) : (

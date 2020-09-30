@@ -1,6 +1,7 @@
 import { db } from '../firebase'
 import { ADD_PRODUCT_ORDEN, REST_STOCK_STATE } from '../constants/productConstants'
 import Swal from 'sweetalert2'
+import moment from 'moment'
 // db.collection('productos').doc(id).update({
 //     stock: stock
 // })
@@ -22,7 +23,7 @@ export const resUnidadVenta = (datos) => {
 }
 
 export const EndOrden = (idTienda, orden, subTotal, details) => {
-    const fecha = new Date();
+    const fecha = moment().format('YYYY-MM-DD')
     let newData = {};
     let total = subTotal;
 

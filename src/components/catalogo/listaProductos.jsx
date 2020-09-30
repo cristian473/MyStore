@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // import productos from '../../productos.json'
 import Producto from './producto'
 import { getProducts } from '../../actions/productActions'
@@ -8,10 +8,27 @@ import '../../styles/productList.scss'
 const ListaProductos = ({ idStore }) => {
     const dispatch = useDispatch();
     const products = useSelector(store => store.products.products)
+    const productsInOrden = useSelector(store => store.orden.productsInOrden)
 
     useEffect(() => {
         dispatch(getProducts(idStore));
     }, [])
+
+    const changeProductsAmountRest = (id) => {
+        if (productsInOrden[id] && productsInOrden[id] !== 0) {
+            let temp = parseInt(productsInOrden[id]) - 1
+            dispatch({ type: 'CLEAN_AMOUNT', payload: { ...productsInOrden, [id]: temp } })
+        }
+    }
+
+    const changeProductsAmountSum = (id) => {
+        if (!productsInOrden[id]) dispatch({ type: 'CLEAN_AMOUNT', payload: { ...productsInOrden, [id]: 1 } })
+        else if (productsInOrden[id] > 0) {
+            let temp = parseInt(productsInOrden[id]) + 1
+            dispatch({ type: 'CLEAN_AMOUNT', payload: { ...productsInOrden, [id]: temp } })
+        }
+    }
+
     return (
         <div className='proContainer'>
             <div className='listaDiv'>
@@ -20,6 +37,9 @@ const ListaProductos = ({ idStore }) => {
                         <Producto
                             key={i}
                             datos={pro}
+                            changeProductsAmountSum={changeProductsAmountSum}
+                            changeProductsAmountRest={changeProductsAmountRest}
+                            productsInOrden={productsInOrden}
                         />
                     ))
                 ) : (

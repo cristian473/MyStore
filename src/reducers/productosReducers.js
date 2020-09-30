@@ -19,6 +19,7 @@ export function getData(state = initialState, action) {
         case REST_STOCK_STATE:
             const indexElemet = state.products.findIndex(e => e.id === action.payload.id)
             state.products[indexElemet].stock--;
+            state.cantidadAgregados = 1
 
             return {
                 ...state

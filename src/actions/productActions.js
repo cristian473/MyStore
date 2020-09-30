@@ -14,6 +14,7 @@ export const addProduct = async (producto) => {
 
 export const getProducts = (id) => {
         return async (dispatch) => {
+                console.log('holapidodatos')
                 const productos = await db.collection("productos").where('idTienda', '==', id).get()
                 const docs = [];
                 productos.forEach(doc => {

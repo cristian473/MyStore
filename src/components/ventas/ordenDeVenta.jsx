@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../actions/productActions'
 import { EndOrden, getGastos, getVentas } from '../../actions/ventasActions'
 import '../../styles/orderDiv.scss'
 import Item from '../catalogo/item'
@@ -19,15 +20,16 @@ const OrdenVenta = ({ idStore }) => {
     const [detailsForm, setDetailsForm] = useState(false);
     const [details, setDetails] = useState(detailsInitialState)
     const [dataClient, setDataClient] = useState(dataClientInitialState)
+    const [sending, setSending] = useState(false)
     let subTotal = 0;
     const handlerClickEndOrden = () => {
         if (detailsForm) {
+            setSending(true)
             setDetails({ ...details, detailsCompleted: true })
         }
         else {
-            setDetails(detailsInitialState);
-            setDataClient(dataClientInitialState);
-            setDetailsForm(false);
+            setSending(true)
+            sendDataClearForm()
             dispatch(EndOrden(idStore, productsOrden, subTotal, details));
             dispatch(getVentas(idStore))
             dispatch(getGastos(idStore))
@@ -39,14 +41,20 @@ const OrdenVenta = ({ idStore }) => {
         return toggle;
     }
 
+    function sendDataClearForm() {
+        setDetails(detailsInitialState);
+        setDataClient(dataClientInitialState);
+        setDetailsForm(false);
+    }
+
     useEffect(() => {
         if (details.detailsCompleted) {
-            setDetails(detailsInitialState);
-            setDataClient(dataClientInitialState);
-            setDetailsForm(false);
+            sendDataClearForm()
             dispatch(EndOrden(idStore, productsOrden, subTotal, details));
         }
     }, [details.detailsCompleted])
+
+
 
     const handlerInputClienteChange = (e) => {
         const { name, value } = e.target;
@@ -67,10 +75,23 @@ const OrdenVenta = ({ idStore }) => {
         setDetails({ ...details, [name]: value })
     }
 
+    const closeForm = () => {
+        if (detailsForm) sendDataClearForm()
+        else if (!detailsForm && productsOrden.length > 0) {
+            console.log('holaa');
+            dispatch(getProducts(idStore));
+            dispatch({ type: 'CLEAN_ORDEN' })
+            dispatch({ type: 'CLEAN_AMOUNT', payload: {} })
+        }
+    }
+
     return (
         <>
             {productsOrden.length > 0 ? (
                 <div className='ordenesContainerDiv'>
+                    <div className="buttonCloseContainer">
+                        <button onClick={closeForm}>X</button>
+                    </div>
                     <div className="ordenesDiv">
                         {productsOrden.map((e, i) => {
                             subTotal += e.cantidad * e.precio;
@@ -78,7 +99,6 @@ const OrdenVenta = ({ idStore }) => {
                         }
                         )}
                     </div>
-
                     {detailsForm && (
                         <div className='detailsFormContainer'>
                             <div className='envioDiv'>
@@ -115,7 +135,7 @@ const OrdenVenta = ({ idStore }) => {
                     )}
                     <div className="buttonsContainer">
                         <div onClick={() => setDetailsForm(true)}>Agregar Detalles</div>
-                        <div onClick={handlerClickEndOrden} >Finalizar venta</div>
+                        <div className={`${sending && 'disable'}`} onClick={handlerClickEndOrden} >Finalizar venta</div>
                     </div>
                 </div>
 
@@ -127,6 +147,10 @@ const OrdenVenta = ({ idStore }) => {
         </>
     )
 
+}
+
+const dobleClick = () => {
+    console.log('dobleClick');
 }
 
 export default OrdenVenta

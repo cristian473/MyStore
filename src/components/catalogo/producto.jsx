@@ -1,10 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { sumUnidadVenta, resUnidadVenta } from '../../actions/ventasActions'
 import trashIcon from '../../media/trashIcon.svg'
 import { deleteProduct } from '../../actions/productActions'
 
-const Producto = ({ datos }) => {
+const Producto = ({ datos, changeProductsAmountRest, changeProductsAmountSum, productsInOrden }) => {
 
     const dispatch = useDispatch();
 
@@ -29,9 +29,15 @@ const Producto = ({ datos }) => {
                     <span>${datos.precio}</span>
                 </div>
             </div>
-            <div className='buttonContainer'>
-                <div onClick={() => dispatch(resUnidadVenta(datos))}> - </div>
-                <div onClick={() => dispatch(sumUnidadVenta(datos))} > + </div>
+            <div className={`buttonContainer`}>
+                <div className={`${!productsInOrden[datos.id] && 'disable'}`} onClick={() => {
+                    dispatch(resUnidadVenta(datos))
+                    changeProductsAmountRest(datos.id)
+                }}> - </div>
+                <div onClick={() => {
+                    dispatch(sumUnidadVenta(datos))
+                    changeProductsAmountSum(datos.id)
+                }} > + </div>
             </div>
         </div>
     )
