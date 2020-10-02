@@ -3,7 +3,7 @@ import './App.css';
 import AddProductForm from '../src/components/gestion/addProductForm'
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import LoginScreen from './components/login/loginScreen'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Home from '../src/components/home/home'
 import SelectStore from '../src/components/home/selectStore'
 import AddDetailsOrden from './components/ventas/AddDetailsOrden'
@@ -13,13 +13,18 @@ import AddStoreForm from '../src/components/gestion/addStoreForm';
 import AddPurchaseForm from '../src/components/gestion/addPurchaseForm'
 
 function App() {
+  const dispatch = useDispatch()
   const user = useSelector(store => store.user)
   const userLogged = useSelector(store => store.userLogged)
   const idStore = localStorage.getItem('idStore')
+  const idStoreRedux = useSelector((store) => store.user.storeSelected)
+
   const renderLoginScreen = () => {
     let title = 'Hola! Tanto tiempo.', description = 'naslkdjna'
     return (<LoginScreen title={title} description={description} />)
-
+  }
+  if (idStore && !idStoreRedux) {
+    dispatch({ type: 'SET_STORE', payload: idStore })
   }
 
   return (
@@ -29,14 +34,16 @@ function App() {
           {idStore && <NavBar />}
           <div className='bodyContainer'>
             <Switch>
-              <Redirect exact from='/login' to='/' />
-              <Route exact path="/" component={SelectStore} />
+              <Redirect exact from='/login' to='/tiendas' />
+              {!idStore && <Redirect exact from='/' to='/tiendas' />}
+              {idStore && <Redirect exact from='/' to='/dashboard' />}
+              <Route exact path="/tiendas" component={SelectStore} />
               <Route exact path="/crear-tienda" component={AddStoreForm} />
-              <Route exact path="/:idStore/dashboard" component={Home} />
-              <Route exact path='/:idStore/finalizar-venta' component={AddDetailsOrden} />
-              <Route exact path='/:idStore/movimientos' component={Movimientos} />
-              <Route exact path='/:idStore/cargacompra' component={AddPurchaseForm} />
-              <Route exact path='/:idStore/cargaitems' component={AddProductForm} />
+              <Route exact path="/dashboard" component={Home} />
+              <Route exact path='/finalizar-venta' component={AddDetailsOrden} />
+              <Route exact path='/movimientos' component={Movimientos} />
+              <Route exact path='/cargacompra' component={AddPurchaseForm} />
+              <Route exact path='/cargaitems' component={AddProductForm} />
             </Switch>
           </div>
         </Fragment>

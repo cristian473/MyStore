@@ -4,16 +4,17 @@ import { getGastos, getVentas } from '../../actions/ventasActions'
 import OrdenVenta from '../ventas/ordenDeVenta'
 import { Link } from 'react-router-dom'
 import '../../styles/bottonOptions.scss'
-const BottonOptions = ({ idStore }) => {
+const BottonOptions = () => {
     const movs = useSelector((store) => store.user.movimientos)
     const gastos = useSelector((store) => store.orden.gastos)
     const dispatch = useDispatch()
     const [totales, setTotales] = useState({ ingresos: 0, ganancia: 0, gastos: 0, balance: 0 })
+    const idStore = useSelector((store) => store.user.storeSelected)
 
     useEffect(() => {
         dispatch(getVentas(idStore))
         dispatch(getGastos(idStore))
-    }, [])
+    }, [idStore])
 
     useEffect(() => {
         if (movs.length > 0) {
@@ -33,7 +34,7 @@ const BottonOptions = ({ idStore }) => {
     return (
         <div className='bottonContainer'>
             <div className='ordenVentaContainer'>
-                <OrdenVenta idStore={idStore} />
+                <OrdenVenta />
             </div>
             <div className='optionsContainer' >
                 <div className='datosContainer'>
@@ -57,10 +58,10 @@ const BottonOptions = ({ idStore }) => {
 
                 </div>
                 <div className='buttonsContainer'>
-                    <Link to={'/' + idStore + '/cargaitems'}>
+                    <Link to={'/cargaitems'}>
                         <div>Agregar producto</div>
                     </Link>
-                    <Link to={'/' + idStore + '/cargacompra'}>
+                    <Link to={'/cargacompra'}>
                         <div>Agregar compra de materiales</div>
                     </Link>
                 </div>

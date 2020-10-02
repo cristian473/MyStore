@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, } from 'react'
 // import productos from '../../productos.json'
 import Producto from './producto'
 import { getProducts } from '../../actions/productActions'
 import { useDispatch, useSelector } from 'react-redux'
 import '../../styles/productList.scss'
 
-const ListaProductos = ({ idStore }) => {
+const ListaProductos = () => {
     const dispatch = useDispatch();
     const products = useSelector(store => store.products.products)
     const productsInOrden = useSelector(store => store.orden.productsInOrden)
-
+    const idStore = useSelector((store) => store.user.storeSelected)
     useEffect(() => {
         dispatch(getProducts(idStore));
     }, [])

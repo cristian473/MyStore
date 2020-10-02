@@ -6,7 +6,8 @@ const initialState = {
     items: [],
     registered: false,
     loged: false,
-    movimientos: []
+    movimientos: [],
+    storeSelected: ''
 }
 
 export function userLoggedState(state = initialState, action) {
@@ -46,6 +47,11 @@ export function useReducer(state = initialState, action) {
             return {
                 ...state,
                 movimientos: action.payload
+            }
+        case 'SET_STORE':
+            return {
+                ...state,
+                storeSelected: action.payload
             }
 
     }

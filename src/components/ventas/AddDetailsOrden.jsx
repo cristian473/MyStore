@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
 const AddDetailsOrden = (props) => {
-
-    const idTienda = props.match.params.idStore;
     const products = props.location.state.productos
 
     let total = 0;

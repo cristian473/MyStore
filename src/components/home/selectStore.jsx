@@ -15,6 +15,7 @@ const SelectStore = () => {
         dispatch(getStores(userLogged.id));
         setLoading(true)
     }, [])
+
     useEffect(() => {
         if (stores.length > 0) {
             setLoading(false)
@@ -23,6 +24,11 @@ const SelectStore = () => {
             setLoading(false)
         }, 5000)
     }, [stores])
+
+    const selectStore = (id) => {
+        localStorage.setItem('idStore', id)
+        dispatch({ type: 'SET_STORE', payload: id })
+    }
 
     return (
         <div className='storeSelectorScreen'>
@@ -38,7 +44,7 @@ const SelectStore = () => {
                                         <div key={i} className='storeDiv'>
                                             <img className='iconStore' src={iconStore} alt="" />
                                             <span>{store.name}</span>
-                                            <Link to={'/' + store.id + '/dashboard'}><button>Abrir</button></Link>
+                                            <Link to={'/dashboard'}><button onClick={() => selectStore(store.id)}>Abrir</button></Link>
                                         </div>
                                     )
                                     )}

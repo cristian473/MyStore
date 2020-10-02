@@ -7,7 +7,7 @@ import '../../styles/movsStyles.scss'
 const Movimientos = () => {
     const movs = useSelector(store => store.user.movimientos)
     const dispatch = useDispatch();
-    const idStore = localStorage.getItem('idStore')
+    const idStore = useSelector((store) => store.user.storeSelected)
     const [detailsVenta, setDetailsVenta] = useState('');
     const [indexItem, setIndex] = useState('');
 

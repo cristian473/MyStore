@@ -7,38 +7,38 @@ import moment from 'moment'
 // })
 
 export const sumUnidadVenta = (datos) => {
-    const newData = { ...datos, cantidad: 1 }
+    const newData = { ...datos, cantidad: 1 };
     return (dispatch) => {
-        dispatch({ type: ADD_PRODUCT_ORDEN, payload: newData })
-        dispatch({ type: REST_STOCK_STATE, payload: datos })
+        dispatch({ type: ADD_PRODUCT_ORDEN, payload: newData });
+        dispatch({ type: REST_STOCK_STATE, payload: datos });
     }
 
 }
 
 export const resUnidadVenta = (datos) => {
     return (dispatch) => {
-        dispatch({ type: 'REST_PRODUCT_ORDEN', payload: datos })
-        dispatch({ type: 'SUM_STOCK_STATE', payload: datos })
+        dispatch({ type: 'REST_PRODUCT_ORDEN', payload: datos });
+        dispatch({ type: 'SUM_STOCK_STATE', payload: datos });
     }
 }
 
 export const EndOrden = (idTienda, orden, subTotal, details) => {
-    const fecha = moment().format('YYYY-MM-DD')
+    const fecha = moment().format('YYYY-MM-DD');
     let newData = {};
     let total = subTotal;
 
     const calculeGain = (envio) => {
-        let sumaCosto = 0
-        let ganancia = 0
-        let newSubtotal = 0
-        let precioEnvio = envio || 0
+        let sumaCosto = 0;
+        let ganancia = 0;
+        let newSubtotal = 0;
+        let precioEnvio = envio || 0;
 
         orden.forEach((it) => {
-            sumaCosto += parseInt(it.costoMaterial * it.cantidad)
+            sumaCosto += parseInt(it.costoMaterial * it.cantidad);
         })
         if (details.ventaMayorista) {
             orden.forEach((it) => {
-                newSubtotal += parseInt(it.precioMayorista * it.cantidad)
+                newSubtotal += parseInt(it.precioMayorista * it.cantidad);
             })
             total = newSubtotal;
         }
@@ -75,7 +75,7 @@ export const EndOrden = (idTienda, orden, subTotal, details) => {
         db.collection('ventas').doc().set(newData)
             .then(() => {
                 orden.forEach(item => {
-                    let newStock = item.stock - item.cantidad
+                    let newStock = item.stock - item.cantidad;
                     db.collection('productos').doc(item.id).update({
                         stock: newStock
                     })
@@ -124,17 +124,16 @@ export const getGastos = (idStore) => {
     }
 }
 
-export const pushGasto = (mov, productos) => {
+export const pushGasto = (mov = {}) => {
 
-    let antiguosProducts = [...productos];
-    if (mov.products.length > 0) {
-        mov.products.forEach((item) => {
-            let index = antiguosProducts.findIndex(el => el.id === item.id);
-            let newStock = antiguosProducts[index].stock + parseInt(item.cantidad);
-            antiguosProducts[index].stock = newStock
-            db.collection('productos').doc(antiguosProducts[index].id).update({
-                stock: newStock
-            })
+    if (mov?.length > 0) {
+        mov.forEach((item) => {
+            if (!item.otroGasto) {
+                let newStock = item.stock + parseInt(item.cantidad);
+                db.collection('productos').doc(item.id).update({
+                    stock: newStock
+                })
+            }
         })
     }
 

@@ -1,209 +1,147 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import '../../styles/AddPurchaseForm.scss'
-import { getProducts } from '../../actions/productActions'
-import { pushGasto } from '../../actions/ventasActions'
-import Swal from 'sweetalert2'
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import '../../styles/AddPurchaseForm.scss';
+import { getProducts } from '../../actions/productActions';
+import { pushGasto } from '../../actions/ventasActions';
+import moment from 'moment';
+import Swal from 'sweetalert2';
 
 const AddPurchaseForm = () => {
-    const dispatch = useDispatch()
-    const products = useSelector(store => store.products.products)
-    const idStore = localStorage.getItem('idStore')
-    const [countDiv, setCountDiv] = useState([1])
-    const [checkBoxes, setCheckBoxes] = useState([false])
-    const [productsSelected, setProductsSelected] = useState([]);
-    const [otrosGastos, setOtrosgastos] = useState([])
+    const dispatch = useDispatch();
+    const products = useSelector(store => store.products.products);
+    const idStore = useSelector((store) => store.user.storeSelected)
+    const [countDiv, setCountDiv] = useState([]);
+    const [total, setTotal] = useState([]);
 
-    const handlerSelectChange = (e, i) => {
-        let id = e.target.value
-        let product = products.filter(el => el.id === id).flat()
-        product[0].cantidad = 0;
-        product[0].ubi = i;
-        let newProductsSelected = [...productsSelected]
-        let newArray = newProductsSelected.flat()
-        newArray[i] = product[0]
-        setProductsSelected(newArray);
-    }
     const handlerSelectedChange = (e, i) => {
-        let id = e.target.value
-        let product = products.filter(el => el.id === id)
-        let _newProductsSelected = [...productsSelected]
-        product[0].cantidad = 0;
-        product[0].ubi = i;
-        _newProductsSelected.splice(i, 1, product[0])
-        setProductsSelected(_newProductsSelected)
-    }
-
-    const handlerSumDiv = () => {
-        let newDiv = [...countDiv]
-        newDiv.push(1)
-        setCountDiv(newDiv);
-        setCheckBoxes([...checkBoxes, false])
-    }
-
-    const handlerRestDiv = () => {
-        let newDiv = [...countDiv]
-        let newProductsSelected = [...productsSelected]
-        let newOtrosGastos = [...otrosGastos]
-        let newCheckBoxes = [...checkBoxes]
-        if (newProductsSelected[newProductsSelected.length - 1].ubi === countDiv.length) {
-            newProductsSelected.pop();
-            setProductsSelected(newProductsSelected)
+        let id = e.target.value;
+        let temp = [...countDiv];
+        let productTemp = products.filter((el) => el.id === id)[0];
+        productTemp.cantidad = 0;
+        if (i || i === 0) {
+            temp[i] = { ...productTemp };
+        } else {
+            temp = [...temp, { ...productTemp }];
         }
-        else {
-            newCheckBoxes.pop()
-            newOtrosGastos.pop()
-            setOtrosgastos(newOtrosGastos);
-            setCheckBoxes(newCheckBoxes);
-        }
-        newDiv.pop()
-        setCountDiv(newDiv);
+        setCountDiv(temp)
     }
 
     const checkTheBox = (i) => {
-        let newCheckBoxes = [...checkBoxes]
-        let _newGastos = [...otrosGastos];
-        let gasto = {
-            otrosGastosDetails: '',
-            otrosGastos: '',
-            ubi: i
+        if (i || i === 0) {
+            let temp = [...countDiv];
+            temp.splice(i, 1);
+            setCountDiv(temp);
+        } else {
+            setCountDiv([...countDiv, { otroGasto: true, otroGastoDetails: '', otroGastoMonto: '' }]);
         }
-        _newGastos.splice(i, 1, gasto)
-        newCheckBoxes.splice(i, 1, !newCheckBoxes[i])
-        setOtrosgastos(_newGastos)
-        setCheckBoxes(newCheckBoxes)
-    }
-
-    const stockChange = (e, i) => {
-        let number = e.target.value
-        let _newProductsSelected = [...productsSelected]
-        _newProductsSelected[i].cantidad = number;
-        setProductsSelected(_newProductsSelected.flat())
     }
 
     const handlerInputOtrosgastos = (e, i) => {
-        const { value, name } = e.target;
-        let _newGastos = [...otrosGastos];
-        if (_newGastos[i]) {
-            _newGastos[i][name] = value;
-        }
-        setOtrosgastos(_newGastos);
+        const { name, value } = e.target;
+        let temp = [...countDiv];
+        temp[i] = { ...temp[i], [name]: value };
+        setCountDiv(temp);
     }
-
     const endOperation = () => {
-        if (productsSelected.length > 0 || otrosGastos.length > 0) {
-            let mov = {
-                idTienda: idStore,
-                products: [],
-                compraDeMateriales: 0,
-                otrosGastos: [],
-                otrosGastosTotal: 0,
-                gastoTotal: 0
-            }
-            let otrosGastosCount = 0;
-            for (let i = 0; i < countDiv.length; i++) {
-                if (productsSelected[i]) {
-                    let product = {
-                        id: productsSelected[i]?.id,
-                        itemName: productsSelected[i]?.name,
-                        precio: productsSelected[i]?.precio,
-                        cantidad: productsSelected[i]?.cantidad
-                    };
-                    let count = mov.compraDeMateriales;
-                    count += productsSelected[i]?.precio * productsSelected[i]?.cantidad;
-                    mov.products.push(product);
-                    mov.compraDeMateriales = count;
-                }
-                else {
-                    let count = mov.otrosGastosTotal;
-                    count += parseInt(otrosGastos?.[otrosGastosCount]?.otrosGastos || 0);
-                    mov.otrosGastosTotal = count;
-                    if (otrosGastos?.[otrosGastosCount]?.otrosGastos) mov.otrosGastos.push(otrosGastos[otrosGastosCount])
-                    otrosGastosCount++;
-                }
-
-            }
-            mov.gastoTotal = mov.compraDeMateriales + mov.otrosGastosTotal;
-            if (mov.gastoTotal === 0) {
-                Swal.fire(
-                    'Error!',
-                    'El total no puede ser 0.',
-                    'error'
-                )
+        let mov = {
+            date: moment().format('YYYY-MM-DD HH:MM'),
+            items: [],
+            otrosGastos: [],
+            gastoItems: 0,
+            gastoOtrosGastos: 0,
+            gastoTotal: 0
+        };
+        let countOtroGasto = 0, countGastoItems = 0, gastoTotal = 0;
+        countDiv.forEach((el) => {
+            if (el.otroGasto) {
+                countOtroGasto += parseInt(el.otroGastoMonto);
+                mov.otrosGastos.push(el)
             } else {
-                pushGasto(mov, products)
+                countGastoItems += el.precio * parseInt(el.cantidad)
+                mov.items.push(el)
             }
-
-        }
-
+        })
+        mov.gastoTotal = countOtroGasto + countGastoItems;
+        mov.gastoItems = countGastoItems;
+        mov.gastoOtrosGastos = countOtroGasto;
+        pushGasto(mov)
     }
 
     useEffect(() => {
         if (products.length === 0 && idStore) dispatch(getProducts(idStore))
     }, [])
 
+    useEffect(() => {
+        let total = 0
+        countDiv.forEach((el) => {
+            if (el.otroGasto) total += parseInt(el.otroGastoMonto) || 0
+            else {
+                total += el.precio * parseInt(el.cantidad) || 0
+            }
+        })
+        setTotal(total);
+    }, [countDiv])
+
     return (
         <div className='containerItems'>
             <h3>Agregar gastos</h3>
             <div className="itemsContainer">
                 {countDiv?.map((div, i) => (
-                    <>
-                        {(productsSelected[i] || checkBoxes[i]) ? (
-                            <div className='itemAdd' key={i}>
-                                {(otrosGastos[i]?.ubi === i) ?
-                                    <>
-                                        <div className='otroGastoDiv'>
-                                            <label for='checkOtroGasto'>Otro gasto</label>
-                                            <input id='checkOtroGasto' type="checkbox" checked onChange={() => checkTheBox(i)} />
-                                        </div>
-                                        <input required type="text" name='otrosGastosDetails' placeholder='Detalles' onChange={(e) => handlerInputOtrosgastos(e, i)} />
-                                        <input required type="number" name='otrosGastos' placeholder='Total del gasto' onChange={(e) => handlerInputOtrosgastos(e, i)} />
-                                    </>
-                                    :
-                                    <>
-                                        <select value={productsSelected[i]?.id} onChange={(e) => handlerSelectedChange(e, i)}>
-                                            {products.map((pro, i) =>
-                                                <option key={i} value={pro.id}>
-                                                    {pro.name}
-                                                </option>
-                                            )}
-                                        </select>
-                                        <input required type="number" placeholder='cantidad' value={productsSelected[i].cantidad || ''} onChange={(e) => stockChange(e, i)} />
-                                        {productsSelected[i].imagen ?
-                                            <img src={productsSelected[i].imagen} alt={productsSelected[i].name} />
-                                            : <></>
-                                        }
-
-                                        <span>C/U ${productsSelected[i].precio}</span>
-                                        <span>costo: ${productsSelected[i].precio * parseInt(productsSelected[i].cantidad) || 0}</span>
-                                    </>
-                                }
-                            </div>
-                        ) : (
-                                <div className='itemAdd' key={i}>
-                                    <div className="otroGastoDiv">
-                                        <label for='checkOtroGasto'>Otro gasto</label>
-                                        <input id='checkOtroGasto' type="checkbox" onChange={() => checkTheBox(i)} />
-                                    </div>
-                                    <select onChange={(e) => handlerSelectChange(e, i)}>
-                                        <option value='' >Seleccione un articulo</option>
-                                        {products.map((pro, i) =>
-                                            <option key={i} value={pro.id}>
-                                                {pro.name}
-                                            </option>)}
-                                    </select>
+                    <div className='itemAdd' key={i}>
+                        {(countDiv[i]?.otroGasto) ?
+                            <>
+                                <div className='otroGastoDiv'>
+                                    <label for='checkOtroGasto'>Otro gasto</label>
+                                    <input id='checkOtroGasto' type="checkbox" checked onChange={() => checkTheBox(i)} />
                                 </div>
-                            )}
-                    </>
+                                <input required value={countDiv[i].otroGastoDetails} name='otroGastoDetails' type="text" placeholder='Detalles'
+                                    onChange={(e) => handlerInputOtrosgastos(e, i)}
+                                />
+                                <input required value={countDiv[i].otroGastoMonto} type="number" name='otroGastoMonto' placeholder='Total del gasto'
+                                    onChange={(e) => handlerInputOtrosgastos(e, i)}
+                                />
+                            </>
+                            :
+                            <>
+                                <select value={countDiv[i]?.id} onChange={(e) => handlerSelectedChange(e, i)}>
+                                    {products.map((pro, i) =>
+                                        <option key={i} value={pro.id}>
+                                            {pro.name}
+                                        </option>
+                                    )}
+                                </select>
+                                <input required type="number" placeholder='cantidad' name='cantidad' value={countDiv[i]?.cantidad} onChange={(e) => handlerInputOtrosgastos(e, i)} />
+                                {countDiv[i]?.imagen ?
+                                    <img src={countDiv[i]?.imagen} alt={countDiv[i]?.name} />
+                                    : <></>
+                                }
+
+                                <span>C/U ${countDiv[i]?.precio}</span>
+                                <span>costo: ${countDiv[i]?.precio * parseInt(countDiv[i]?.cantidad) || 0}</span>
+                            </>
+                        }
+                    </div>
                 ))}
+                <div className='itemAdd'>
+                    <div className="otroGastoDiv">
+                        <label for='checkOtroGasto'>Otro gasto</label>
+                        <input id='checkOtroGasto' type="checkbox" checked={false} onChange={() => checkTheBox()} />
+                    </div>
+                    <select onChange={handlerSelectedChange}>
+                        <option>Seleccione un articulo</option>
+                        {products.map((pro, i) =>
+                            <option key={i} value={pro.id}>
+                                {pro.name}
+                            </option>)}
+                    </select>
+                </div>
             </div>
             <div className='buttonsContainer'>
                 <div className="buttons">
-                    <button className={`${countDiv.length === 1 && 'disable'}`} onClick={handlerRestDiv}>-</button>
-                    <button onClick={handlerSumDiv}>+</button>
+                    <span>Total: ${total}</span>
                 </div>
                 <button
-                    className={`endButton ${productsSelected.length === 0 && otrosGastos.length === 0 && 'disable'}`}
+                    className={`endButton ${(!countDiv[0]?.otroGasto && !countDiv[0]?.id) && 'disable'}`}
                     onClick={endOperation}
                 >Finalizar operación</button>
             </div>

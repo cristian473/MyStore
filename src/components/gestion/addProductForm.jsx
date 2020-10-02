@@ -6,7 +6,7 @@ import FileBase64 from 'react-file-base64';
 
 const AddProductForm = () => {
     const user = useSelector(store => store.userLogged)
-    const idStore = localStorage.getItem('idStore')
+    const idStore = useSelector((store) => store.user.storeSelected)
     const initialState = {
         name: '',
         stock: '',

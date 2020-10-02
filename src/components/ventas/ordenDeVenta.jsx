@@ -5,7 +5,7 @@ import { EndOrden, getGastos, getVentas } from '../../actions/ventasActions'
 import '../../styles/orderDiv.scss'
 import Item from '../catalogo/item'
 
-const OrdenVenta = ({ idStore }) => {
+const OrdenVenta = () => {
     const detailsInitialState = {
         detailsCompleted: false,
         envio: false,
@@ -14,6 +14,7 @@ const OrdenVenta = ({ idStore }) => {
         cliente: false,
         datosCliente: { name: '', tel: '', direccion: '' }
     }
+    const idStore = useSelector((store) => store.user.storeSelected)
     const dataClientInitialState = { name: '', tel: '', direccion: '' };
     const dispatch = useDispatch();
     const productsOrden = useSelector(store => store.orden.productsOrden)
