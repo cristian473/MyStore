@@ -25,7 +25,7 @@ const Producto = ({ datos, changeProductsAmountRest, changeProductsAmountSum, pr
                     <span>{datos.name}</span>
                 </div>
                 <div className='stockPrecio'>
-                    <span>stock: {datos.stock}</span>
+                    <span>Stock: {datos.stock}</span>
                     <span>${datos.precio}</span>
                 </div>
             </div>

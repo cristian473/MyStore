@@ -45,9 +45,7 @@ export const loginUser = (data) => {
 
         auth.signInWithEmailAndPassword(data.email, data.password)
             .then(() => {
-
                 const currentUser = auth.currentUser;
-
                 const userLogged = {
                     id: currentUser.uid,
                     name: currentUser.displayName,
@@ -55,6 +53,16 @@ export const loginUser = (data) => {
                 }
                 localStorage.setItem('userLogged', JSON.stringify(userLogged))
                 dispatch({ type: LOGGED })
+            })
+            .catch(error => {
+                if (error.code === 'auth/wrong-password') {
+                    Swal.fire(
+                        'Error!',
+                        'Los datos no coinciden, por favor intente nuevamente',
+                        'error'
+                    )
+                }
+
             })
 
 
