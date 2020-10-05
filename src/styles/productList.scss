@@ -104,15 +104,18 @@
             flex-flow: wrap;
             margin-top: 0;
             height: 100%;
-            margin-bottom: 50px;
+            margin-bottom: 5vh;
             .productContainer{
                 width: 46%;
                 margin: 15px 2%;
             }
-            
+
         }
         &.ordening{
              max-height: 75vh !important;
+             .listaDiv{
+                 margin-bottom: 10vh;
+             }
         }
     }   
 }

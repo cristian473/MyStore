@@ -42,7 +42,8 @@ export function ventasReducer(state = initialState, action) {
         case 'CLEAN_ORDEN':
             return {
                 ...state,
-                productsOrden: []
+                productsOrden: [],
+                productsInOrden: {}
             }
         case 'GET_GASTOS':
             return {
