@@ -80,6 +80,7 @@ export const addStore = (store) => {
                 showCloseButton: true
             }).then((result) => {
                 if (result.isConfirmed) {
+                    localStorage.removeItem('idStore');
                     window.location.replace('https://mystore-one.vercel.app/tiendas')
                 }
             })
