@@ -20,7 +20,7 @@ function App() {
   const idStoreRedux = useSelector((store) => store.user.storeSelected)
 
   const renderLoginScreen = () => {
-    let title = 'Hola! Tanto tiempo.', description = 'naslkdjna'
+    let title = 'Hola! Tanto tiempo.', description = 'Siéntete como en casa.'
     return (<LoginScreen title={title} description={description} />)
   }
   if (idStore && !idStoreRedux) {
@@ -51,7 +51,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={renderLoginScreen} />
             <Route exact path="/registro">
-              {user.registered ? <Redirect to='/' /> : <LoginScreen register title={'Hola! Bienvenido a MyStore.'} description={'soy el formulario de registro xD'} />}
+              {user.registered ? <Redirect to='/' /> : <LoginScreen register title={'Hola! Bienvenido a MyStore.'} description={'Bienvenido a la manera simplificada de llevar las cuentas.'} />}
             </Route>
           </Switch>
         )}

@@ -29,7 +29,7 @@
         bottom: 0;       
     }
     img{
-        width: 30vw;
+        width: 24vw;
         position: absolute;
         left: 0;
         bottom: 10px;
@@ -42,11 +42,14 @@
             flex-direction: column;
             width: 100%;
             align-items: center;
-            height: 80%;
+            height: 100%;
+            padding-top: 9%;
+            .titleContainer{
+                width: 60%;
+            }
             .formContainer{
                 width: 100%;
             }
-
         }
         svg{
             
