@@ -15,15 +15,17 @@ const AddPurchaseForm = () => {
 
     const handlerSelectedChange = (e, i) => {
         let id = e.target.value;
-        let temp = [...countDiv];
-        let productTemp = products.filter((el) => el.id === id)[0];
-        productTemp.cantidad = 0;
-        if (i || i === 0) {
-            temp[i] = { ...productTemp };
-        } else {
-            temp = [...temp, { ...productTemp }];
+        if (id != 1) {
+            let temp = [...countDiv];
+            let productTemp = products.filter((el) => el.id === id)[0];
+            productTemp.cantidad = 0;
+            if (i || i === 0) {
+                temp[i] = { ...productTemp };
+            } else {
+                temp = [...temp, { ...productTemp }];
+            }
+            setCountDiv(temp)
         }
-        setCountDiv(temp)
     }
 
     const checkTheBox = (i) => {
@@ -128,7 +130,7 @@ const AddPurchaseForm = () => {
                         <input id='checkOtroGasto' type="checkbox" checked={false} onChange={() => checkTheBox()} />
                     </div>
                     <select onChange={handlerSelectedChange}>
-                        <option>Seleccione un articulo</option>
+                        <option value={1}>Seleccione un articulo</option>
                         {products.map((pro, i) =>
                             <option key={i} value={pro.id}>
                                 {pro.name}

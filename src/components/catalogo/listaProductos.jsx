@@ -29,8 +29,9 @@ const ListaProductos = () => {
         }
     }
 
+    console.log(productsInOrden);
     return (
-        <div className='proContainer'>
+        <div className={`proContainer ${Object.keys(productsInOrden).length > 0 && 'ordening'}`}>
             <div className='listaDiv'>
                 {products.length > 0 ? (
                     products.map((pro, i) => (

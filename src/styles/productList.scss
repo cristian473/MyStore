@@ -93,3 +93,23 @@
         }
     }    
 }
+
+@media (max-width: 450px){
+    .proContainer{
+        overflow: auto;
+        max-height: 53vh;
+        padding-bottom: 5%;
+        .listaDiv{
+            width: 100%;
+            flex-flow: wrap;
+            margin-top: 0;
+            .productContainer{
+                width: 46%;
+                margin: 15px 2%;
+            }
+        }
+        &.ordening{
+             max-height: 69vh !important;
+        }
+    }   
+}

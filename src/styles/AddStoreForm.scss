@@ -40,3 +40,11 @@
         
     }
 }
+
+@media(max-width:450px){
+    .addStoreContainer{
+        form{
+            width: 95vw;
+        }
+    }
+}

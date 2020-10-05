@@ -87,71 +87,57 @@ const OrdenVenta = () => {
     }
 
     return (
-        <>
-            {productsOrden.length > 0 ? (
-                <div className='ordenesContainerDiv'>
-                    <div className="buttonCloseContainer">
-                        <button onClick={closeForm}>X</button>
+        <div className='ordenesContainerDiv'>
+            <div className="buttonCloseContainer">
+                <button onClick={closeForm}>X</button>
+            </div>
+            <div className="ordenesDiv">
+                {productsOrden.map((e, i) => {
+                    subTotal += e.cantidad * e.precio;
+                    return (<Item key={i} item={e} />)
+                }
+                )}
+            </div>
+            {detailsForm && (
+                <div className='detailsFormContainer'>
+                    <div className='envioDiv'>
+                        <label for="envio">Envio</label>
+                        <input type='checkbox' onChange={handlerCheckboxChange} name='envio' />
                     </div>
-                    <div className="ordenesDiv">
-                        {productsOrden.map((e, i) => {
-                            subTotal += e.cantidad * e.precio;
-                            return (<Item key={i} item={e} />)
-                        }
-                        )}
-                    </div>
-                    {detailsForm && (
-                        <div className='detailsFormContainer'>
-                            <div className='envioDiv'>
-                                <label for="envio">Envio</label>
-                                <input type='checkbox' onChange={handlerCheckboxChange} name='envio' />
-                            </div>
-                            {details.envio && (
-                                <>
-                                    <label for="precioEnvio">Precio del envio</label>
-                                    <input type="text" name='precioEnvio' onChange={handlerInputChange} value={details.precioEnvio} />
-                                </>
-                            )}
-                            {/* <input type="text" name='envio' onChange={handlerInputChange} value
-                             = {details.envio} /> */}
-                            <div className="datosClienteDiv">
-                                <label for="cliente">Datos del cliente</label>
-                                <input type='checkbox' onChange={handlerCheckboxChange} name='cliente' />
-                            </div>
-                            {details.cliente && (
-                                <>
-                                    <label for="name">Nombre del cliente</label>
-                                    <input type="text" name='name' onChange={handlerInputClienteChange} value={dataClient.name} />
-                                    <label for="tel">Telefono</label>
-                                    <input type="text" name='tel' onChange={handlerInputClienteChange} value={dataClient.tel} />
-                                    <label for="direccion">Dirección</label>
-                                    <input type="text" name='direccion' onChange={handlerInputClienteChange} value={dataClient.direccion} />
-                                </>
-                            )}
-                            <div className="precioMayorista">
-                                <label for="precioMayorista">Venta Mayorista</label>
-                                <input type='checkbox' onChange={handlerCheckboxChange} name='ventaMayorista' />
-                            </div>
-                        </div>
+                    {details.envio && (
+                        <>
+                            <label for="precioEnvio">Precio del envio</label>
+                            <input type="text" name='precioEnvio' onChange={handlerInputChange} value={details.precioEnvio} />
+                        </>
                     )}
-                    <div className="buttonsContainer">
-                        <div onClick={() => setDetailsForm(true)}>Agregar Detalles</div>
-                        <div className={`${sending && 'disable'}`} onClick={handlerClickEndOrden} >Finalizar venta</div>
+                    {/* <input type="text" name='envio' onChange={handlerInputChange} value
+                             = {details.envio} /> */}
+                    <div className="datosClienteDiv">
+                        <label for="cliente">Datos del cliente</label>
+                        <input type='checkbox' onChange={handlerCheckboxChange} name='cliente' />
+                    </div>
+                    {details.cliente && (
+                        <>
+                            <label for="name">Nombre del cliente</label>
+                            <input type="text" name='name' onChange={handlerInputClienteChange} value={dataClient.name} />
+                            <label for="tel">Telefono</label>
+                            <input type="text" name='tel' onChange={handlerInputClienteChange} value={dataClient.tel} />
+                            <label for="direccion">Dirección</label>
+                            <input type="text" name='direccion' onChange={handlerInputClienteChange} value={dataClient.direccion} />
+                        </>
+                    )}
+                    <div className="precioMayorista">
+                        <label for="precioMayorista">Venta Mayorista</label>
+                        <input type='checkbox' onChange={handlerCheckboxChange} name='ventaMayorista' />
                     </div>
                 </div>
-
-            ) : (
-
-                    <>
-                    </>
-                )}
-        </>
+            )}
+            <div className="buttonsContainer">
+                <div onClick={() => setDetailsForm(true)}>Agregar Detalles</div>
+                <div className={`${sending && 'disable'}`} onClick={handlerClickEndOrden} >Finalizar venta</div>
+            </div>
+        </div>
     )
-
-}
-
-const dobleClick = () => {
-    console.log('dobleClick');
 }
 
 export default OrdenVenta

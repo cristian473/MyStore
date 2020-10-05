@@ -29,9 +29,31 @@
         bottom: 0;       
     }
     img{
-        width: 400px;
+        width: 30vw;
         position: absolute;
         left: 0;
         bottom: 10px;
     }
+}
+
+@media (max-width: 450px){
+    .loginScreenContainer{
+        .formsMsjContainer{
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            height: 80%;
+            .formContainer{
+                width: 100%;
+            }
+
+        }
+        svg{
+            
+        }
+        img{
+            width: 40vw;
+        }
+    }
+
 }

@@ -17,7 +17,7 @@
 
     .ordenVentaContainer{
         display: flex;
-    justify-content: center;
+        justify-content: center;
     }
 
     .optionsContainer{
@@ -64,4 +64,44 @@
 
         }
     }
+}
+
+@media (max-width: 450px){
+    .bottonContainer{
+        width: 100%;
+        margin: 0;
+        z-index: 100;
+        min-height: 21vh;
+        .ordenVentaContainer{
+            height: 100%;
+        }        
+        .optionsContainer{
+            flex-direction: column;
+            .datosContainer{
+                flex-wrap: wrap;
+                width: 100%;
+                .valueDiv{
+                    width: 50%;
+                }
+            }
+            .buttonsContainer{
+                justify-content: center;
+                align-items: center;
+                a{
+                    width: 90%;
+                    div{
+                        color: #ffffff;
+                        background-color: #351b58;
+                        width: 100%;
+                        height: 8vh;
+                        font-size: 18px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+
 }

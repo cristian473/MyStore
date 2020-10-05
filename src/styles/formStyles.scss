@@ -77,3 +77,17 @@
         margin-top: 10px;
     }
 }
+
+@media (max-width: 450px){
+    .formLoginContainer{
+        form{
+            input{
+                width: 100%;
+            }
+        }
+        .buttonsContainer{
+
+        }
+    }
+
+}

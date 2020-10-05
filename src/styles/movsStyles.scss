@@ -8,12 +8,13 @@
     display: flex;
     flex-direction: column;
     width: 80%;
+    margin-top: 5%;
     .titlesDiv {
       display: flex;
       justify-content: space-between;
         margin: 15px 0px;
         h3{
-          color: #ffffff;
+          color: #414141;
         }
       .titleItemsDiv {
         display: flex;
@@ -98,3 +99,41 @@
     }
   }
 }
+
+@media (max-width: 450px){
+  .movContainer{
+    .titleMovs{
+      width: auto;
+      .titlesDiv{
+        display: none;
+      }
+      .listaMovsContainer{
+        width: 95vw;
+        .movContainer{
+          .movDiv{
+            flex-direction: column;
+            .containerItem{
+              flex-wrap: wrap;
+              justify-content: center;
+              padding-bottom: 10px;
+            }
+            .valuesDiv{
+              flex-direction: row-reverse;     
+              h3{
+                font-size: 1.5rem;
+              }         
+            }
+          }
+          .detailsContainer{
+            margin-top: 10px;
+            flex-direction: column;
+            .cardDetails{
+              margin: 1vh 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

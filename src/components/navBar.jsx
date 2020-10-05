@@ -23,7 +23,7 @@ const NavBar = () => {
                 <Link to={'/movimientos'}><button className='buttonNav'>Movimientos</button></Link>
                 <Link to={'/crear-tienda'} ><button className='buttonNav'> Crear Tienda </button> </Link>
                 <Link to={'/tiendas'} ><button className='buttonNav' onClick={closeStore}>Cerrar Tienda</button></Link>
-                <button className='buttonNav' onClick={handlerClick}>Log out</button>
+                <button style={{ width: '20%' }} className='buttonNav' onClick={handlerClick}>Log out</button>
             </div>
         </div>
     )

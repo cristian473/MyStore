@@ -10,6 +10,7 @@ const BottonOptions = () => {
     const dispatch = useDispatch()
     const [totales, setTotales] = useState({ ingresos: 0, ganancia: 0, gastos: 0, balance: 0 })
     const idStore = useSelector((store) => store.user.storeSelected)
+    const productsOrden = useSelector(store => store.orden.productsOrden)
 
     useEffect(() => {
         dispatch(getVentas(idStore))
@@ -33,38 +34,45 @@ const BottonOptions = () => {
 
     return (
         <div className='bottonContainer'>
-            <div className='ordenVentaContainer'>
-                <OrdenVenta />
-            </div>
+            {productsOrden.length > 0 && (
+                <div className='ordenVentaContainer'>
+                    <OrdenVenta />
+                </div>
+            )}
+
             <div className='optionsContainer' >
-                <div className='datosContainer'>
-                    <div className='valueDiv'>
-                        <h4>Ingresos:</h4>
-                        <h3>${totales.ingresos}</h3>
-                    </div>
-                    <div className='valueDiv'>
-                        <h4>Gastos:</h4>
-                        <h3>${totales.gastos}</h3>
-                    </div>
+                {productsOrden.length === 0 && (
+                    <>
+                        <div className='datosContainer'>
+                            <div className='valueDiv'>
+                                <h4>Ingresos:</h4>
+                                <h3>${totales.ingresos}</h3>
+                            </div>
+                            <div className='valueDiv'>
+                                <h4>Gastos:</h4>
+                                <h3>${totales.gastos}</h3>
+                            </div>
 
-                    <div className='valueDiv'>
-                        <h4>Ganancia:</h4>
-                        <h3>${totales.ganancia}</h3>
-                    </div>
-                    <div className='valueDiv'>
-                        <h4>Balance:</h4>
-                        <h3>${totales.balance}</h3>
-                    </div>
+                            <div className='valueDiv'>
+                                <h4>Ganancia:</h4>
+                                <h3>${totales.ganancia}</h3>
+                            </div>
+                            <div className='valueDiv'>
+                                <h4>Balance:</h4>
+                                <h3>${totales.balance}</h3>
+                            </div>
 
-                </div>
-                <div className='buttonsContainer'>
-                    <Link to={'/cargaitems'}>
-                        <div>Agregar producto</div>
-                    </Link>
-                    <Link to={'/cargacompra'}>
-                        <div>Agregar compra de materiales</div>
-                    </Link>
-                </div>
+                        </div>
+                        <div className='buttonsContainer'>
+                            <Link to={'/cargaitems'}>
+                                <div>Agregar producto</div>
+                            </Link>
+                            <Link to={'/cargacompra'}>
+                                <div>Agregar compra de materiales</div>
+                            </Link>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     )

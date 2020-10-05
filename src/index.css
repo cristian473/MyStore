@@ -29,6 +29,7 @@ form{
 }
 form input{
   margin: 2px;
+  text-align: center;
 }
 
 a{

@@ -86,4 +86,45 @@
     }
 }
 
+@media (max-width:450px){
+    .ordenesContainerDiv{
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px 0;            
+        .buttonCloseContainer{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+        .ordenesDiv{            
+            margin: 0;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        .detailsFormContainer{
+            align-items: center;
+            div,
+            label,
+            input{
+                width: 80%;
+                padding: 0.7% 0;
+            }
+            input[type='checkbox']{
+                transform: scale(1.6);
+                width: auto;
+            }
+        }
+        .buttonsContainer{
+            margin-top: 3vh;
+            div{
+                text-align: center;
+                padding: 12px;
+                margin: 0 17px;
+            }
+        }
+    }
+}
+
     
