@@ -70,6 +70,20 @@ export const logUot = () => {
 
 export const addStore = (store) => {
     db.collection('stores').doc().set(store)
+        .then((r) => {
+            Swal.fire({
+                title: '¿Desea abrir su tienda ahora?',
+                icon: 'question',
+                cancelButtonText: 'No',
+                confirmButtonText: 'Si',
+                showCancelButton: true,
+                showCloseButton: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace('https://mystore-one.vercel.app/tiendas')
+                }
+            })
+        })
 }
 
 export const getStores = (id) => {
