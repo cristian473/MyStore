@@ -28,8 +28,11 @@ const RegisterForm = () => {
                 <input required placeholder='Nombre' type="text" name='name' onChange={handlerInputChange} />
                 <input required placeholder='Email' type="email" name='email' onChange={handlerInputChange} />
                 <input required placeholder='Password' type="password" name='password' onChange={handlerInputChange} />
-                <Link to='/'><button type='button' className='loginButton'>Iniciar sesion</button></Link>
-                <button type='submit'>Registrarse</button>
+                {!state.password ?
+                    <Link to='/'><button type='button' className='loginButton'>Iniciar sesion</button></Link>
+                    :
+                    <button className='listoButton' type='submit'>Listo!</button>
+                }
             </form>
 
         </div>
