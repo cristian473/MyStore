@@ -97,19 +97,22 @@
 @media (max-width: 450px){
     .proContainer{
         overflow: auto;
-        max-height: 53vh;
+        max-height: 61vh;
         padding-bottom: 5%;
         .listaDiv{
             width: 100%;
             flex-flow: wrap;
             margin-top: 0;
+            height: 100%;
+            margin-bottom: 50px;
             .productContainer{
                 width: 46%;
                 margin: 15px 2%;
             }
+            
         }
         &.ordening{
-             max-height: 69vh !important;
+             max-height: 75vh !important;
         }
     }   
 }

@@ -12,7 +12,7 @@ export const registerUser = (data) => {
                     'Ahora inicia sesión para continuar',
                     "success"
                 ).then(() => {
-                    window.location.replace('http://localhost:3000')
+                    window.location.replace('https://mystore-one.vercel.app/')
                 })
             })
             .catch(erro => {
@@ -64,7 +64,7 @@ export const loginUser = (data) => {
 export const logUot = () => {
     localStorage.removeItem('userLogged');
     localStorage.removeItem('idStore');
-    window.location.replace('http://localhost:3000')
+    window.location.replace('https://mystore-one.vercel.app/')
 
 }
 

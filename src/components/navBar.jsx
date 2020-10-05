@@ -3,7 +3,7 @@ import { logUot } from '../actions/userActions'
 import { Link } from 'react-router-dom'
 import '../styles/navBar.scss'
 import { useDispatch } from 'react-redux'
-const NavBar = () => {
+const NavBar = (props) => {
     const dispatch = useDispatch()
     const handlerClick = () => {
         logUot()
@@ -13,6 +13,7 @@ const NavBar = () => {
         dispatch({ type: 'SET_STORE', payload: '' })
         localStorage.removeItem('idStore')
     }
+    console.log(props)
     return (
         <div className='NavBar'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
