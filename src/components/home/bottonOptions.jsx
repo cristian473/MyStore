@@ -34,47 +34,39 @@ const BottonOptions = () => {
     }, [movs, gastos])
 
     return (
-        <div className='bottonContainer'>
-            {productsOrden.length > 0 && (
-                <div className='ordenVentaContainer'>
-                    <OrdenVenta />
-                </div>
+        <div className='optionsContainer' >
+            {productsOrden.length === 0 && (
+                <>
+                    <div className='datosContainer'>
+                        <div className='valueDiv'>
+                            <h4>Ingresos:</h4>
+                            <h3>${totales.ingresos}</h3>
+                        </div>
+                        <div className='valueDiv'>
+                            <h4>Gastos:</h4>
+                            <h3>${totales.gastos}</h3>
+                        </div>
+
+                        <div className='valueDiv'>
+                            <h4>Ganancia:</h4>
+                            <h3>${totales.ganancia}</h3>
+                        </div>
+                        <div className='valueDiv'>
+                            <h4>Balance:</h4>
+                            <h3>${totales.balance}</h3>
+                        </div>
+
+                    </div>
+                    <div className='buttonsContainer'>
+                        <Link to={'/cargaitems'}>
+                            <div>Agregar producto</div>
+                        </Link>
+                        <Link to={'/cargacompra'}>
+                            <div>Agregar compra de materiales</div>
+                        </Link>
+                    </div>
+                </>
             )}
-
-            <div className='optionsContainer' >
-                {productsOrden.length === 0 && (
-                    <>
-                        <div className='datosContainer'>
-                            <div className='valueDiv'>
-                                <h4>Ingresos:</h4>
-                                <h3>${totales.ingresos}</h3>
-                            </div>
-                            <div className='valueDiv'>
-                                <h4>Gastos:</h4>
-                                <h3>${totales.gastos}</h3>
-                            </div>
-
-                            <div className='valueDiv'>
-                                <h4>Ganancia:</h4>
-                                <h3>${totales.ganancia}</h3>
-                            </div>
-                            <div className='valueDiv'>
-                                <h4>Balance:</h4>
-                                <h3>${totales.balance}</h3>
-                            </div>
-
-                        </div>
-                        <div className='buttonsContainer'>
-                            <Link to={'/cargaitems'}>
-                                <div>Agregar producto</div>
-                            </Link>
-                            <Link to={'/cargacompra'}>
-                                <div>Agregar compra de materiales</div>
-                            </Link>
-                        </div>
-                    </>
-                )}
-            </div>
         </div>
     )
 }
