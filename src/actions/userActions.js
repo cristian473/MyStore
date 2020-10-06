@@ -30,7 +30,7 @@ export const registerUser = (data) => {
 
     //             const userLogged = auth.currentUser;
     //             userLogged.updateProfile({
-    //                 displayName: data.name
+    //                 displayName: data.productName
     //             }).then(() => {
     //                 dispatch({ type: REGISTERED, payload: data })
     //             })

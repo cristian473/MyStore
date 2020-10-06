@@ -25,7 +25,7 @@ const RegisterForm = () => {
     return (
         <div className='formLoginContainer'>
             <form onSubmit={handlerSubmit}>
-                <input required placeholder='Nombre' type="text" name='name' onChange={handlerInputChange} />
+                <input required placeholder='Nombre' type="text" name='productName' onChange={handlerInputChange} />
                 <input required placeholder='Email' type="email" name='email' onChange={handlerInputChange} />
                 <input required placeholder='Password' type="password" name='password' onChange={handlerInputChange} />
                 {!state.password ?

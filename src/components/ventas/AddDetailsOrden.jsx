@@ -11,7 +11,7 @@ const AddDetailsOrden = (props) => {
                 total += e.cantidad * e.precio;
                 return (
                     <div key={i}>
-                        <h4>{e.name}</h4>
+                        <h4>{e.productName}</h4>
                         <h4>unidades: {e.cantidad}</h4>
                     </div>
                 )

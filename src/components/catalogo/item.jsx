@@ -3,7 +3,7 @@ import '../../styles/itemStyles.scss'
 const Item = ({ item }) => {
     return (
         <div className='itemDiv'>
-            <h4>{item.cantidad} | {item.name}</h4>
+            <h4>{item.cantidad} | {item.productName}</h4>
         </div>
     )
 }

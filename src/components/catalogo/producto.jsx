@@ -31,7 +31,7 @@ const Producto = ({ datos, changeProductsAmountRest, changeProductsAmountSum, pr
             </div>
             <div className='details'>
                 <div className='nameProduct'>
-                    <span>{datos.name}</span>
+                    <span>{datos.productName}</span>
                 </div>
                 <div className='stockPrecio'>
                     <span>Stock: {datos.stock}</span>

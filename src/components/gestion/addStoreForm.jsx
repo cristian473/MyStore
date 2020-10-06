@@ -34,7 +34,7 @@ const AddStoreForm = () => {
     return (
         <div className="addStoreContainer">
             <form onSubmit={(e) => handlerSubmit(e)} >
-                <input type="text" name='name' placeholder='Nombre de la tienda' value={store.name} onChange={handlerInputChange} />
+                <input type="text" name='productName' placeholder='Nombre de la tienda' value={store.name} onChange={handlerInputChange} />
                 <input type="text" name='address' value={store.address} placeholder='Direccion' onChange={handlerInputChange} />
                 <input type="text" name='phone' value={store.phone} placeholder='Nro de telefono' onChange={handlerInputChange} />
                 <button type='submit' >Cargar tienda</button>

@@ -52,7 +52,7 @@ const AddProductForm = () => {
             <div className='form'>
                 <h2>Carga de productos</h2>
                 <form onSubmit={(e) => handlerSubmit(e)} >
-                    <input required type="text" name='name' placeholder='Nombre' value={producto.name} onChange={handlerInputChange} />
+                    <input required type="text" name='productName' placeholder='Nombre' value={producto.productName} onChange={handlerInputChange} />
                     <input required type="number" min={0} step="any" name='precio' value={producto.precio} placeholder='Precio' onChange={handlerInputChange} />
                     <input type="number" min={0} step="any" name='precioMayorista' value={producto.precioMayorista} placeholder='Precio Mayorista' onChange={handlerInputChange} />
                     <input required type="number" min={0} step="any" name='costoMaterial' value={producto.costoMaterial} placeholder='Costo del material' onChange={handlerInputChange} />

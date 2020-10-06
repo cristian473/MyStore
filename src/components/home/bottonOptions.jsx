@@ -28,6 +28,7 @@ const BottonOptions = () => {
             gastos.forEach(({ gastoTotal = 0 }) => {
                 gastosTotal += parseInt(gastoTotal)
             })
+            debugger
             balance = ingresosTotal - gastosTotal
             setTotales({ ingresos: ingresosTotal, ganancia: ganaciaTotal, gastos: gastosTotal, balance: balance })
         }
