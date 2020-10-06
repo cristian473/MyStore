@@ -70,6 +70,8 @@
             width: 74%;
             display: flex;
             justify-content: center;
+            display: flex;
+            align-items: center;
             button{
                 font-size: 21px;
                 margin: 0 10px;
@@ -83,7 +85,7 @@
         .endButton{
             background-color: $violeta-oscuro;
             color: #ffffff;
-            height: 40px;
+            height: auto;
             font-weight: 600;
             user-select: none;
             &.disable{

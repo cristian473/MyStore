@@ -55,10 +55,18 @@ export const loginUser = (data) => {
                 dispatch({ type: LOGGED })
             })
             .catch(error => {
+                console.log(error);
                 if (error.code === 'auth/wrong-password') {
                     Swal.fire(
                         'Error!',
                         'Los datos no coinciden, por favor intente nuevamente',
+                        'error'
+                    )
+                }
+                if (error.code === 'auth/user-not-found') {
+                    Swal.fire(
+                        'Error!',
+                        'El correo no existe, por favor intente nuevamente, o regístrese si aún no lo hizo!',
                         'error'
                     )
                 }

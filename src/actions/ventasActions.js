@@ -126,14 +126,13 @@ export const getGastos = (idStore) => {
 
 export const pushGasto = (mov = {}) => {
 
-    if (mov?.length > 0) {
-        mov.forEach((item) => {
-            if (!item.otroGasto) {
-                let newStock = item.stock + parseInt(item.cantidad);
-                db.collection('productos').doc(item.id).update({
-                    stock: newStock
-                })
-            }
+    console.log(mov);
+    if (mov?.items.length > 0) {
+        mov.items.forEach((item) => {
+            let newStock = item.stock + parseInt(item.cantidad);
+            db.collection('productos').doc(item.id).update({
+                stock: newStock
+            })
         })
     }
 

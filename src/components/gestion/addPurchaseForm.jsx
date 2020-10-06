@@ -18,7 +18,7 @@ const AddPurchaseForm = () => {
         if (id != 1) {
             let temp = [...countDiv];
             let productTemp = products.filter((el) => el.id === id)[0];
-            productTemp.cantidad = 0;
+            productTemp.cantidad = '';
             if (i || i === 0) {
                 temp[i] = { ...productTemp };
             } else {
@@ -59,7 +59,7 @@ const AddPurchaseForm = () => {
                 countOtroGasto += parseInt(el.otroGastoMonto);
                 mov.otrosGastos.push(el)
             } else {
-                countGastoItems += el.precio * parseInt(el.cantidad)
+                countGastoItems += el.costoMaterial * parseInt(el.cantidad)
                 mov.items.push(el)
             }
         })
@@ -75,10 +75,10 @@ const AddPurchaseForm = () => {
 
     useEffect(() => {
         let total = 0
-        countDiv.forEach((el) => {
-            if (el.otroGasto) total += parseInt(el.otroGastoMonto) || 0
+        countDiv.forEach(({ otroGastoMonto = 0, otroGasto = 0, cantidad = 0, costoMaterial = 0 }) => {
+            if (otroGasto) total += parseInt(otroGastoMonto) || 0
             else {
-                total += el.precio * parseInt(el.cantidad) || 0
+                total += costoMaterial * parseInt(cantidad) || 0
             }
         })
         setTotal(total);
@@ -118,8 +118,8 @@ const AddPurchaseForm = () => {
                                     : <></>
                                 }
 
-                                <span>C/U ${countDiv[i]?.precio}</span>
-                                <span>costo: ${countDiv[i]?.precio * parseInt(countDiv[i]?.cantidad) || 0}</span>
+                                <span>C/U ${countDiv[i]?.costoMaterial}</span>
+                                <span>costo: ${countDiv[i]?.costoMaterial * parseInt(countDiv[i]?.cantidad) || 0}</span>
                             </>
                         }
                     </div>

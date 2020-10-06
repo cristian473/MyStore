@@ -20,12 +20,13 @@ const BottonOptions = () => {
     useEffect(() => {
         if (movs.length > 0) {
             let ganaciaTotal = 0, gastosTotal = 0, ingresosTotal = 0, balance = 0;
-            movs.forEach(el => {
-                ganaciaTotal += parseInt(el.ganancia)
-                ingresosTotal += parseInt(el.total)
+            console.log(movs);
+            movs.forEach(({ ganancia = 0, total = 0 }) => {
+                ganaciaTotal += parseInt(ganancia)
+                ingresosTotal += parseInt(total)
             });
-            gastos.forEach((el) => {
-                gastosTotal += parseInt(el.gastoTotal)
+            gastos.forEach(({ gastoTotal = 0 }) => {
+                gastosTotal += parseInt(gastoTotal)
             })
             balance = ingresosTotal - gastosTotal
             setTotales({ ingresos: ingresosTotal, ganancia: ganaciaTotal, gastos: gastosTotal, balance: balance })

@@ -28,7 +28,6 @@ const ListaProductos = () => {
             dispatch({ type: 'CLEAN_AMOUNT', payload: { ...productsInOrden, [id]: temp } })
         }
     }
-
     return (
         <div className={`proContainer ${Object.keys(productsInOrden).length > 0 && 'ordening'}`}>
             <div className='listaDiv'>
