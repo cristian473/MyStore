@@ -99,7 +99,7 @@ const AddPurchaseForm = () => {
             else {
                 let costo = toNumber(parseFloat(parseFloat(costoMaterial) * parseInt(cantidad)).toFixed(2))
                 if (costo > 0) {
-                    sumTotal = sumTotal + costo;
+                    sumTotal = toNumber(parseFloat(sumTotal + costo).toFixed(2));
                 }
             }
         })

@@ -16,6 +16,7 @@ const BottonOptions = () => {
         dispatch(getVentas(idStore))
         dispatch(getGastos(idStore))
     }, [idStore])
+    console.log(gastos);
 
     useEffect(() => {
         if (movs.length > 0) {

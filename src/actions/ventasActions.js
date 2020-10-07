@@ -126,27 +126,25 @@ export const getGastos = (idStore) => {
 
 export const pushGasto = (mov = {}) => {
 
-    console.log(mov);
     if (mov?.items.length > 0) {
-        mov.items.forEach((item) => {
+        mov.items.forEach(async (item) => {
             let newStock = item.stock + parseInt(item.cantidad);
-            db.collection('productos').doc(item.id).update({
+            let r = await db.collection('productos').doc(item.id).update({
                 stock: newStock
             })
         })
     }
-
+    debugger;
     db.collection('gastos').doc().set(mov)
         .then(() => {
             Swal.fire(
                 'Exito',
                 'Gasto Cargado',
                 'success'
-            ).then(() => {
-
-            })
+            )
         })
-        .catch(() => {
+        .catch((err) => {
+            console.log(err);
             Swal.fire(
                 'Error',
                 'Algo ocurrió, por favor vuelva a intentar',
