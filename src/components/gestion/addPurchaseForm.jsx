@@ -70,11 +70,12 @@ const AddPurchaseForm = () => {
                     let sum = parseFloat(countOtroGasto)
                     countOtroGasto = sum + toNumber(parseFloat(parseInt(el.otroGastoMonto)).toFixed(2))
                     mov.otrosGastos.push(el)
+
                 } else {
                     let sum = parseFloat(countGastoItems)
                     countGastoItems = sum + toNumber(parseFloat(parseFloat(el.costoMaterial) * parseInt(el.cantidad)).toFixed(2))
                     mov.items.push(el)
-                    debugger;
+
                 }
             })
 
@@ -90,12 +91,13 @@ const AddPurchaseForm = () => {
     }, [])
 
     useEffect(() => {
-        let sumTotal = ''
+        let sumTotal = 0
         countDiv.forEach(({ otroGastoMonto = 0, otroGasto = 0, cantidad = 0, costoMaterial = 0 }) => {
-            if (otroGasto) sumTotal += parseInt(otroGastoMonto) || 0
+            if (otroGasto) {
+                sumTotal += toNumber(parseFloat(otroGastoMonto).toFixed(2) || 0)
+            }
             else {
-                let costo = parseFloat(parseFloat(costoMaterial) * parseInt(cantidad)).toFixed(2)
-                console.log(costo);
+                let costo = toNumber(parseFloat(parseFloat(costoMaterial) * parseInt(cantidad)).toFixed(2))
                 if (costo > 0) {
                     sumTotal = sumTotal + costo;
                 }

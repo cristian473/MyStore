@@ -12,7 +12,7 @@
     .itemsContainer{
         max-height: 66vh;
         overflow: auto;
-        width: 40%;
+        width: auto;
         padding: 0 10px;
         ; 
         &::-webkit-scrollbar{

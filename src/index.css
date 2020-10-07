@@ -35,6 +35,9 @@ form input{
 input[type='number']{  
   -webkit-appearance: none;
   margin: 0;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius:3px;
+  text-align: center;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
