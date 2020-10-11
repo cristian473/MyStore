@@ -70,11 +70,12 @@ const AddPurchaseForm = () => {
                     let sum = parseFloat(countOtroGasto)
                     countOtroGasto = sum + toNumber(parseFloat(parseInt(el.otroGastoMonto)).toFixed(2))
                     mov.otrosGastos.push(el)
+
                 } else {
                     let sum = parseFloat(countGastoItems)
                     countGastoItems = sum + toNumber(parseFloat(parseFloat(el.costoMaterial) * parseInt(el.cantidad)).toFixed(2))
                     mov.items.push(el)
-                    debugger;
+
                 }
             })
 
@@ -97,7 +98,7 @@ const AddPurchaseForm = () => {
             else {
                 let costo = toNumber(parseFloat(parseFloat(costoMaterial) * parseInt(cantidad)).toFixed(2))
                 if (costo > 0) {
-                    sumTotal = sumTotal + costo;
+                    sumTotal = toNumber(parseFloat(sumTotal + costo).toFixed(2));
                 }
             }
         })

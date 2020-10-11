@@ -159,9 +159,7 @@ export const pushGasto = (mov = {}) => {
                 'Exito',
                 'Gasto Cargado',
                 'success'
-            ).then(() => {
-
-            })
+            )
         })
         .catch((err) => {
             console.log(err);
