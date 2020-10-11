@@ -102,8 +102,7 @@
 }
 
 @media (max-width: 450px){
-    .proContainer{
-        overflow: auto;
+    .proContainer{        
         max-height: 61vh;
         padding-bottom: 5%;
         .listaDiv{
@@ -111,8 +110,8 @@
             flex-flow: wrap;
             margin-top: 0;
             height: 100%;
-            margin-bottom: 20vh;
-            padding-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 10vh;
             .productContainer{
                 width: 46%;
                 margin: 15px 2%;
