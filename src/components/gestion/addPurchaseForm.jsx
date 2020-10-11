@@ -90,12 +90,12 @@ const AddPurchaseForm = () => {
     }, [])
 
     useEffect(() => {
-        let sumTotal = ''
+        let sumTotal = 0
         countDiv.forEach(({ otroGastoMonto = 0, otroGasto = 0, cantidad = 0, costoMaterial = 0 }) => {
+            debugger
             if (otroGasto) sumTotal += parseInt(otroGastoMonto) || 0
             else {
-                let costo = parseFloat(parseFloat(costoMaterial) * parseInt(cantidad)).toFixed(2)
-                console.log(costo);
+                let costo = toNumber(parseFloat(parseFloat(costoMaterial) * parseInt(cantidad)).toFixed(2))
                 if (costo > 0) {
                     sumTotal = sumTotal + costo;
                 }
@@ -166,7 +166,7 @@ const AddPurchaseForm = () => {
             </div>
             <div className='buttonsContainer'>
                 <div className="buttons">
-                    <span>Total: ${total}</span>
+                    <span>Total: ${total.toFixed(2)}</span>
                 </div>
                 <button
                     className={`endButton ${(!countDiv[0]?.otroGasto && !countDiv[0]?.id) && 'disable'}`}

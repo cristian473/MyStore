@@ -18,14 +18,14 @@ const BottonOptions = () => {
     }, [idStore])
 
     useEffect(() => {
-        if (movs.length > 0) {
+        if (movs.length > 0 || gastos.length > 0) {
             let ganaciaTotal = 0, gastosTotal = 0, ingresosTotal = 0, balance = 0;
             console.log(movs);
-            movs.forEach(({ ganancia = 0, total = 0 }) => {
+            movs.forEach(({ ganancia, total }) => {
                 ganaciaTotal += parseInt(ganancia)
                 ingresosTotal += parseInt(total)
             });
-            gastos.forEach(({ gastoTotal = 0 }) => {
+            gastos.forEach(({ gastoTotal }) => {
                 gastosTotal += parseInt(gastoTotal)
             })
             debugger

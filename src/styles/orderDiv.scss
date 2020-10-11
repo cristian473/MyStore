@@ -15,7 +15,7 @@
         padding: 15px;
         display: flex;
         justify-content: center;
-
+        flex-wrap: wrap;
         .ordenDiv{
             margin: 10px;
             background-color:$Violet;
@@ -70,7 +70,8 @@
     }
     .buttonsContainer{
         display: flex;
-        margin-bottom: 10px;        
+        margin-bottom: 10px; 
+        justify-content: center;       
         div{
             margin: 0px 30px;
             background-color: #893ef3;

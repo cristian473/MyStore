@@ -2,17 +2,13 @@ import { db } from '../firebase'
 import { ADD_PRODUCT_ORDEN, REST_STOCK_STATE } from '../constants/productConstants'
 import Swal from 'sweetalert2'
 import moment from 'moment'
-// db.collection('productos').doc(id).update({
-//     stock: stock
-// })
 
 export const sumUnidadVenta = (datos) => {
-    const newData = { ...datos, cantidad: 1 };
+    const newData = { ...datos, cantidad: 1, imagen: '' };
     return (dispatch) => {
         dispatch({ type: ADD_PRODUCT_ORDEN, payload: newData });
         dispatch({ type: REST_STOCK_STATE, payload: datos });
     }
-
 }
 
 export const resUnidadVenta = (datos) => {
@@ -74,23 +70,40 @@ export const EndOrden = (idTienda, orden, subTotal, details) => {
     return (dispatch) => {
         db.collection('ventas').doc().set(newData)
             .then(() => {
+                const batch = db.batch();
                 orden.forEach(item => {
+                    let ref = db.collection('productos').doc(item.id);
                     let newStock = item.stock - item.cantidad;
-                    db.collection('productos').doc(item.id).update({
-                        stock: newStock
+                    batch.update(ref, { stock: newStock })
+                })
+                batch.commit()
+                    .then(() =>
+                        Swal.fire(
+                            'Buen trabajo!',
+                            'Orden registrada con éxito.',
+                            'success'
+                        ).then(() => {
+                            dispatch({ type: 'CLEAN_ORDEN' })
+                        })
+                    )
+                    .catch((err) => {
+                        console.log(err);
+                        Swal.fire(
+                            'Error!',
+                            'No sabemos qué pasó! intente nuevamente.',
+                            'error'
+                        )
                     })
 
-                })
-                Swal.fire(
-                    'Buen trabajo!',
-                    'Orden registrada con éxito.',
-                    'success'
-                ).then(() => {
-                    dispatch({ type: 'CLEAN_ORDEN' })
-                })
-
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                Swal.fire(
+                    'Error!',
+                    'No sabemos qué pasó! intente nuevamente.',
+                    'error'
+                )
+            })
     }
 }
 
@@ -120,23 +133,27 @@ export const getGastos = (idStore) => {
                     docs.push({ ...doc.data(), id: doc.id })
                 })
                 dispatch({ type: 'GET_GASTOS', payload: docs })
+                console.log(docs);
             })
     }
 }
 
 export const pushGasto = (mov = {}) => {
+    const { items = [] } = mov;
+    const batch = db.batch();
+    const gastoRef = db.collection('gastos').doc()
 
-    console.log(mov);
-    if (mov?.items.length > 0) {
-        mov.items.forEach((item) => {
+    if (items.length > 0) {
+        items.forEach((item) => {
             let newStock = item.stock + parseInt(item.cantidad);
-            db.collection('productos').doc(item.id).update({
-                stock: newStock
-            })
+            item.imagen = ''
+            let productRef = db.collection('productos').doc(item.id)
+            batch.update(productRef, { stock: newStock })
         })
     }
+    batch.set(gastoRef, mov);
 
-    db.collection('gastos').doc().set(mov)
+    batch.commit()
         .then(() => {
             Swal.fire(
                 'Exito',
@@ -146,7 +163,8 @@ export const pushGasto = (mov = {}) => {
 
             })
         })
-        .catch(() => {
+        .catch((err) => {
+            console.log(err);
             Swal.fire(
                 'Error',
                 'Algo ocurrió, por favor vuelva a intentar',

@@ -29,6 +29,9 @@ const OrdenVenta = () => {
             setDetails({ ...details, detailsCompleted: true })
         }
         else {
+            productsOrden.forEach(el => {
+
+            });
             setSending(true)
             sendDataClearForm()
             dispatch(EndOrden(idStore, productsOrden, subTotal, details));
@@ -36,7 +39,7 @@ const OrdenVenta = () => {
             dispatch(getGastos(idStore))
         }
     }
-
+    console.log(productsOrden);
     function toggleFlag(value) {
         var toggle = value ? false : true;
         return toggle;
@@ -119,7 +122,7 @@ const OrdenVenta = () => {
                     {details.cliente && (
                         <>
                             <label for="name">Nombre del cliente</label>
-                            <input type="text" name='productName' onChange={handlerInputClienteChange} value={dataClient.name} />
+                            <input type="text" name='name' onChange={handlerInputClienteChange} value={dataClient.name} />
                             <label for="tel">Telefono</label>
                             <input type="text" name='tel' onChange={handlerInputClienteChange} value={dataClient.tel} />
                             <label for="direccion">Dirección</label>
