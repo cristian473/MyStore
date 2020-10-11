@@ -60,7 +60,7 @@ const AddProductForm = () => {
                     <FileBase64
                         onDone={handlerImageUpload}
                     />
-                    <button type='submit'>Cargar</button>
+                    <button type='submit' onClick={}>Cargar</button>
                 </form>
             </div>
         </div>
