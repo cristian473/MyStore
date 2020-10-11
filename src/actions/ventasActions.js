@@ -112,12 +112,11 @@ export const getVentas = (idTienda) => {
         db.collection("ventas")
             .where('idTienda', '==', idTienda)
             .orderBy("fecha", "desc")
-            .get().then(querySnapshot => {
+            .onSnapshot(querySnapshot => {
                 const docs = []
                 querySnapshot.forEach(doc => {
                     docs.push({ ...doc.data(), id: doc.id })
                 })
-
                 dispatch({ type: 'GET_MOVIMIENTOS', payload: docs })
             })
     }
@@ -127,13 +126,12 @@ export const getGastos = (idStore) => {
     return (dispatch) => {
         db.collection("gastos")
             .where('idTienda', '==', idStore)
-            .get().then(querySnapshot => {
+            .onSnapshot(querySnapshot => {
                 const docs = []
                 querySnapshot.forEach(doc => {
                     docs.push({ ...doc.data(), id: doc.id })
                 })
                 dispatch({ type: 'GET_GASTOS', payload: docs })
-                console.log(docs);
             })
     }
 }

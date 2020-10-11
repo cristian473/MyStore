@@ -55,6 +55,8 @@ const AddPurchaseForm = () => {
                 'error'
             )
         } else {
+            Swal.fire({ title: 'Realizando operación' })
+            Swal.showLoading()
             let mov = {
                 date: moment().format('YYYY-MM-DD HH:MM'),
                 items: [],

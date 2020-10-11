@@ -47,8 +47,8 @@ const Movimientos = () => {
                                             setIndex(index);
                                         }
                                         }> ver detalles </button>
-                                        <h3>${mov.total}</h3>
-                                        <h3>${mov.ganancia}</h3>
+                                        <h3>${(mov.total).toFixed(2)}</h3>
+                                        <h3>${(mov.ganancia).toFixed(2)}</h3>
                                     </div>
                                 </div>
                                 {indexItem === index && (

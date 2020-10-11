@@ -85,6 +85,8 @@ export const logUot = () => {
 }
 
 export const addStore = (store) => {
+    Swal.fire({ title: 'Realizando operación' })
+    Swal.showLoading()
     db.collection('stores').doc().set(store)
         .then((r) => {
             Swal.fire({

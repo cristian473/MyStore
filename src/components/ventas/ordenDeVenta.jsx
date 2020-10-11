@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../actions/productActions'
 import { EndOrden, getGastos, getVentas } from '../../actions/ventasActions'
 import '../../styles/orderDiv.scss'
+import Swal from 'sweetalert2'
 import Item from '../catalogo/item'
 
 const OrdenVenta = () => {
@@ -24,6 +25,8 @@ const OrdenVenta = () => {
     const [sending, setSending] = useState(false)
     let subTotal = 0;
     const handlerClickEndOrden = () => {
+        Swal.fire({ title: 'Realizando operación' })
+        Swal.showLoading()
         if (detailsForm) {
             setSending(true)
             setDetails({ ...details, detailsCompleted: true })

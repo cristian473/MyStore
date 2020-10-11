@@ -2,6 +2,8 @@ import { db } from '../firebase'
 import Swal from 'sweetalert2'
 
 export const addProduct = async (producto) => {
+        Swal.fire({ title: 'Realizando operación' })
+        Swal.showLoading()
         await db.collection("productos").doc().set(producto)
 
         Swal.fire(
@@ -15,12 +17,16 @@ export const addProduct = async (producto) => {
 export const getProducts = (id) => {
         return async (dispatch) => {
                 console.log('holapidodatos')
-                const productos = await db.collection("productos").where('idTienda', '==', id).get()
-                const docs = [];
-                productos.forEach(doc => {
-                        docs.push({ ...doc.data(), id: doc.id })
-                })
-                dispatch({ type: 'GET_PRODUCTS', payload: docs })
+                db.collection("productos")
+                        .where('idTienda', '==', id)
+                        .onSnapshot((snap) => {
+                                const docs = [];
+                                snap.forEach(doc => {
+                                        docs.push({ ...doc.data(), id: doc.id })
+                                })
+                                dispatch({ type: 'GET_PRODUCTS', payload: docs })
+                        })
+
         }
 }
 
