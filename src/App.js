@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import './App.css';
 import AddProductForm from '../src/components/gestion/addProductForm'
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
@@ -8,9 +8,11 @@ import Home from '../src/components/home/home'
 import SelectStore from '../src/components/home/selectStore'
 import AddDetailsOrden from './components/ventas/AddDetailsOrden'
 import NavBar from '../src/components/navBar'
+import NavMobile from '../src/components/navBarMobile'
 import Movimientos from '../src/components/gestion/seeMovimientos'
 import AddStoreForm from '../src/components/gestion/addStoreForm';
 import AddPurchaseForm from '../src/components/gestion/addPurchaseForm'
+
 
 function App() {
   const dispatch = useDispatch()
@@ -27,12 +29,22 @@ function App() {
     dispatch({ type: 'SET_STORE', payload: idStore })
   }
 
+
   return (
     <BrowserRouter>
       {userLogged.loged ? (
         <Fragment>
-          {idStore && <NavBar />}
+          {idStore && (
+            <>
+              {window.innerWidth > 450
+                ? <NavBar />
+                :
+                <NavMobile />
+              }
+            </>
+          )}
           <div className='bodyContainer'>
+
             <Switch>
               <Redirect exact from='/login' to='/tiendas' />
               {!idStore && <Redirect exact from='/' to='/tiendas' />}

@@ -1,0 +1,50 @@
+.appBar{
+    background-color: #8338ec;
+}
+.MuiAppBar-colorPrimary{
+    background-color: #8338ec;
+}
+.MuiToolbar-root{
+    justify-content: space-between;    
+}
+.MuiButton-label{
+    color: #ffffff;
+}
+.MuiSvgIcon-root{
+    font-size: 2rem;
+}
+
+.navContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    button{
+        &:focus{            
+            outline: none;
+        }
+    }
+}
+.MuiButtonBase-root{
+    &:focus{
+        outline-color: transparent;
+    }
+}
+
+.MuiPaper-root {
+    .linksContainer{
+        display: flex;
+        flex-direction: column;   
+        a{
+            text-decoration: none;
+            color: #000000;
+        }       
+        .buttonNav{
+            text-decoration: none;
+            justify-content: center;
+        }
+    }
+}
+.MuiListItem-root{
+    justify-content: center;
+}
+

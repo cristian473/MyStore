@@ -25,8 +25,9 @@ const SelectStore = () => {
         }, 5000)
     }, [stores])
 
-    const selectStore = (id) => {
+    const selectStore = (id, name) => {
         localStorage.setItem('idStore', id)
+        localStorage.setItem('nameStore', name)
         dispatch({ type: 'SET_STORE', payload: id })
     }
 
@@ -44,7 +45,7 @@ const SelectStore = () => {
                                         <div key={i} className='storeDiv'>
                                             <img className='iconStore' src={iconStore} alt="" />
                                             <span>{store.name}</span>
-                                            <Link to={'/dashboard'}><button onClick={() => selectStore(store.id)}>Abrir</button></Link>
+                                            <Link to={'/dashboard'}><button onClick={() => selectStore(store.id, store.name)}>Abrir</button></Link>
                                         </div>
                                     )
                                     )}
